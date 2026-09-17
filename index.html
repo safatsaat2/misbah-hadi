@@ -238,6 +238,7 @@
       align-items: center;
       justify-content: center;
     }
+
   </style>
 </head>
 <body class="font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-sky-400 selection:text-black">
@@ -309,7 +310,7 @@
     </div>
   </header>
 
-  <main class="pt-20">
+  <main class="pt-20 relative z-10">
 
     <!-- ================= HERO SECTION ================= -->
     <section id="hero" class="min-h-[88vh] flex items-center justify-center py-16 border-b theme-border relative">
@@ -533,10 +534,9 @@
           <div class="lg:col-span-5 relative">
             <div class="rounded-2xl overflow-hidden border theme-border theme-card p-2">
               <div class="aspect-[4/5] rounded-xl overflow-hidden relative bg-slate-900">
-                <img src="personal.jpg" 
-                     onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80'" 
+                <img src="about-misbah.jpeg" 
                      alt="Misbah Hadi" 
-                     class="w-full h-full object-cover object-top hover:scale-105 transition-all duration-500"
+                     class="w-full h-full object-cover object-center hover:scale-105 transition-all duration-500"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
                 
@@ -772,7 +772,7 @@
   </main>
 
   <!-- ================= FOOTER ================= -->
-  <footer class="border-t theme-border py-12 text-xs theme-text-muted text-center">
+  <footer class="relative z-10 border-t theme-border py-12 text-xs theme-text-muted text-center">
     <p>© 2026 Misbah Hadi. All rights reserved.</p>
   </footer>
 
@@ -842,7 +842,7 @@
       {
         id: "proj-02",
         title: "Turning Sales Into Stories | VSL Video",
-        category: "Commercial",
+        category: "Short-form",
         featured: true,
         year: "2025",
         client: "VSL Campaign",
@@ -874,6 +874,66 @@
         youtubeId: "PCb8lIYaTLo",
         description: "Event highlight reel capturing energy, rhythm, and memorable moments with cinematic transitions.",
         tools: ["Premiere Pro", "DaVinci Resolve", "After Effects"]
+      },
+      {
+        id: "proj-05",
+        title: "Built Through Discipline | GYM Video",
+        category: "Commercial",
+        featured: false,
+        year: "2025",
+        client: "Fitness Brand",
+        thumbnail: youtubeThumbnail("vDSv1IUAPvM"),
+        youtubeId: "vDSv1IUAPvM",
+        description: "High-energy gym edit showcasing discipline, grit, and transformation through dynamic pacing and bold visuals.",
+        tools: ["Premiere Pro", "After Effects", "DaVinci Resolve"]
+      },
+      {
+        id: "proj-06",
+        title: "Journeys Worth Remembering | Travel and Tour Video",
+        category: "Commercial",
+        featured: false,
+        year: "2025",
+        client: "Travel & Tourism",
+        thumbnail: youtubeThumbnail("MyoRy5o5V1Q"),
+        youtubeId: "MyoRy5o5V1Q",
+        description: "Cinematic travel montage capturing destinations, culture, and unforgettable moments on the road.",
+        tools: ["Premiere Pro", "DaVinci Resolve", "After Effects"]
+      },
+      {
+        id: "proj-07",
+        title: "Bringing Spaces to Life | Eco Friendly Video",
+        category: "Commercial",
+        featured: false,
+        year: "2025",
+        client: "Eco Brand",
+        thumbnail: youtubeThumbnail("aB_br0JAqMw"),
+        youtubeId: "aB_br0JAqMw",
+        description: "Sustainability-focused brand film highlighting eco-friendly spaces with clean visuals and purposeful storytelling.",
+        tools: ["Premiere Pro", "After Effects", "Photoshop"]
+      },
+      {
+        id: "proj-08",
+        title: "Innovation in Every Frame | Tech Video",
+        category: "Commercial",
+        featured: false,
+        year: "2025",
+        client: "Tech Brand",
+        thumbnail: youtubeThumbnail("VOEefXFkumo"),
+        youtubeId: "VOEefXFkumo",
+        description: "Sleek tech product edit with modern motion graphics, sharp cuts, and a futuristic visual tone.",
+        tools: ["Premiere Pro", "After Effects", "DaVinci Resolve"]
+      },
+      {
+        id: "proj-09",
+        title: "The Power to Push Forward | Motivational Video",
+        category: "YouTube",
+        featured: false,
+        year: "2025",
+        client: "Motivational Content",
+        thumbnail: youtubeThumbnail("QPRYvYT2m-c"),
+        youtubeId: "QPRYvYT2m-c",
+        description: "Inspirational edit built to drive engagement with powerful pacing, emotional hooks, and cinematic grading.",
+        tools: ["Premiere Pro", "After Effects", "DaVinci Resolve"]
       }
     ];
 
@@ -898,9 +958,11 @@
 
     const servicesData = [
       { num: "01", title: "YouTube Video Editing", desc: "Full retention-focused editing for long-form channels." },
-      { num: "02", title: "Short-form Content", desc: "Dynamic Reels/TikTok edits with kinetic captions." },
-      { num: "03", title: "Cinematic Editing", desc: "Commercial spots and cinematic storytelling." },
-      { num: "04", title: "Color Grading", desc: "Professional color science and filmic looks." }
+      { num: "02", title: "UGC Video", desc: "Authentic Stories. Real Connections." },
+      { num: "03", title: "VSL Video", desc: "Turn Attention Into Action." },
+      { num: "04", title: "Short-form Content", desc: "Dynamic Reels/TikTok edits with kinetic captions." },
+      { num: "05", title: "Cinematic Editing", desc: "Commercial spots and cinematic storytelling." },
+      { num: "06", title: "Color Grading", desc: "Professional color science and filmic looks." }
     ];
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -920,15 +982,15 @@
       renderStackedFeaturedProjects();
 
       // Render Filters & Portfolio
-      const cats = ["All", "YouTube", "Short-form", "Commercial", "Manipulation Graphics"];
+      const cats = ["All", "YouTube", "Commercial", "Short-form"];
       document.getElementById("portfolioFilterContainer").innerHTML = cats.map(c => `
         <button onclick="filterPortfolio('${c}')" class="portfolio-btn px-4 py-2 rounded-full text-xs font-semibold border ${c === 'All' ? 'bg-sky-500 text-white border-sky-500' : 'theme-card theme-text-muted theme-border'}">${c}</button>
       `).join('');
       renderPortfolio("All");
 
       // Render Services
-      document.getElementById("servicesGrid").innerHTML = servicesData.map(s => `
-        <div class="p-6 rounded-2xl theme-card border theme-border interactive-glow-card cursor-default flex flex-col justify-between group">
+      document.getElementById("servicesGrid").innerHTML = servicesData.map((s, index) => `
+        <div class="p-6 rounded-2xl theme-card border theme-border interactive-glow-card cursor-default flex flex-col justify-between group${index === 4 ? ' lg:col-start-2' : ''}">
           <div>
             <span class="font-heading text-sm theme-accent font-bold">${s.num}</span>
             <h3 class="text-base font-heading mt-2 group-hover:text-sky-400 transition-colors">${s.title}</h3>
