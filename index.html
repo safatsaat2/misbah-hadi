@@ -1,0 +1,1091 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Misbah Hadi — Creative Artist & Video Editor</title>
+  <meta name="description" content="Portfolio of Misbah Hadi, Creative Artist & Video Editor.">
+
+  <!-- Google Fonts: Plus Jakarta Sans + Playfair fallback for Ws Paradose styling -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              accent: '#0284c7',
+              accentDark: '#38bdf8'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Ws Paradose Font Declaration */
+    @font-face {
+      font-family: 'Ws Paradose';
+      src: local('Ws Paradose'), local('WsParadose'), url('https://fonts.cdnfonts.com/s/93278/WsParadose.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* All Headings in Helvetica Bold */
+    h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+      font-weight: 700 !important;
+      letter-spacing: -0.02em;
+    }
+
+    /* Ws Paradose Class for "Powerful Visual" (Title Case) */
+    .font-paradose {
+      font-family: 'Ws Paradose', 'Playfair Display', Georgia, serif !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      font-style: italic;
+      letter-spacing: 0.01em;
+    }
+
+    /* Theme Dynamic Colors */
+    :root {
+      --bg-main: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f1f5f9;
+      --border-color: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --accent: #0284c7;
+      --bubble-color: rgba(2, 132, 199, 0.25);
+      --card-glow: rgba(2, 132, 199, 0.35);
+    }
+
+    html.dark {
+      --bg-main: #070709;
+      --bg-card: #141419;
+      --bg-card-hover: #1a1a22;
+      --border-color: #24242f;
+      --text-main: #f4f4f6;
+      --text-muted: #9696a4;
+      --accent: #38bdf8;
+      --bubble-color: rgba(56, 189, 248, 0.3);
+      --card-glow: rgba(56, 189, 248, 0.35);
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .theme-card {
+      background-color: var(--bg-card);
+      border-color: var(--border-color);
+    }
+    .theme-border {
+      border-color: var(--border-color);
+    }
+    .theme-text-muted {
+      color: var(--text-muted);
+    }
+    .theme-accent {
+      color: var(--accent);
+    }
+
+    /* Interactive Colorful Glow Card on Hover */
+    .interactive-glow-card {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                  border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                  box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .interactive-glow-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent) !important;
+      box-shadow: 0 0 35px var(--card-glow), 0 10px 25px -5px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    /* Small Pill Button Badge Styling */
+    .pill-button-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.35rem 1.15rem;
+      border-radius: 9999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(56, 189, 248, 0.08);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.12);
+      transition: all 0.25s ease;
+    }
+    .pill-button-badge:hover {
+      background: rgba(56, 189, 248, 0.16);
+      border-color: var(--accent);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
+    }
+
+    /* Ultra-Refined Frosted Glassmorphism Card */
+    .glass-effect-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 12px 35px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    html:not(.dark) .glass-effect-card {
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 12px 35px 0 rgba(31, 38, 135, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    /* Dual Marquee Animations */
+    @keyframes marqueeLeft {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes marqueeRight {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0%); }
+    }
+
+    .animate-marquee-left {
+      display: flex;
+      width: max-content;
+      animation: marqueeLeft 32s linear infinite;
+    }
+    .animate-marquee-right {
+      display: flex;
+      width: max-content;
+      animation: marqueeRight 32s linear infinite;
+    }
+
+    .marquee-wrapper:hover .animate-marquee-left,
+    .marquee-wrapper:hover .animate-marquee-right {
+      animation-play-state: paused;
+    }
+
+    .marquee-fade-mask {
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+
+    /* UNIFORM STACKED STICKY CARDS */
+    .stacked-project-card {
+      position: sticky;
+      will-change: transform, top;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 -10px 30px -5px rgba(0, 0, 0, 0.3), 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Fluid Bubble Cursor */
+    @media (pointer: fine) {
+      .mouse-bubble {
+        pointer-events: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 30px; height: 30px;
+        border-radius: 50%;
+        background: var(--bubble-color);
+        box-shadow: 0 0 20px var(--bubble-color);
+        backdrop-filter: blur(2px);
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                    height 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                    background-color 0.2s, 
+                    transform 0.08s ease-out;
+      }
+      .mouse-bubble.bubble-active {
+        width: 65px;
+        height: 65px;
+        background: var(--bubble-color);
+        border: 1px solid var(--accent);
+      }
+    }
+
+    .aspect-video-custom {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+    .aspect-video-custom iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-sky-400 selection:text-black">
+
+  <!-- Interactive Bubble Follower -->
+  <div id="mouseBubble" class="mouse-bubble hidden md:block" aria-hidden="true"></div>
+
+  <!-- ================= HEADER / NAVBAR ================= -->
+  <header id="siteHeader" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 backdrop-blur-md border-b theme-border bg-opacity-80">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg theme-card border flex items-center justify-center font-heading theme-accent text-lg shadow-sm">
+          MH
+        </div>
+        <div class="flex flex-col">
+          <span class="font-heading text-base tracking-wide">Misbah Hadi</span>
+          <span class="text-[10px] theme-text-muted tracking-wider uppercase font-medium">Creative Artist</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#about" class="theme-text-muted hover:text-sky-400 transition-colors">About</a>
+        <a href="#showcase" class="theme-text-muted hover:text-sky-400 transition-colors">Visuals</a>
+        <a href="#featured" class="theme-text-muted hover:text-sky-400 transition-colors">Featured</a>
+        <a href="#skills" class="theme-text-muted hover:text-sky-400 transition-colors">Skills</a>
+        <a href="#portfolio" class="theme-text-muted hover:text-sky-400 transition-colors">Portfolio</a>
+        <a href="#services" class="theme-text-muted hover:text-sky-400 transition-colors">Services</a>
+        <a href="#process" class="theme-text-muted hover:text-sky-400 transition-colors">Process</a>
+        <a href="#contact" class="theme-text-muted hover:text-sky-400 transition-colors">Contact</a>
+      </nav>
+
+      <!-- Actions: Theme Toggle & WhatsApp Hire Button -->
+      <div class="flex items-center gap-3 sm:gap-4">
+        
+        <!-- Dark / Day Toggle Button -->
+        <button id="themeToggleBtn" type="button" class="p-2.5 rounded-full theme-card border theme-border hover:text-sky-400 transition-all cursor-pointer" aria-label="Toggle Theme Mode">
+          <svg id="sunIcon" class="w-4 h-4 hidden dark:block text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg id="moonIcon" class="w-4 h-4 block dark:hidden text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        </button>
+
+        <!-- Direct WhatsApp Redirect Hire Me Button -->
+        <a href="https://wa.me/8801757205162?text=Hello%20Misbah,%20I%20am%20interested%20in%20hiring%20you%20for%20a%20video%20editing%20project." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-sky-500 text-white hover:bg-sky-400 hover:text-black transition-all shadow-[0_0_15px_rgba(56,189,248,0.3)]">
+          Hire Me
+        </a>
+
+        <!-- Mobile Toggle -->
+        <button id="mobileMenuBtn" type="button" class="md:hidden p-2 theme-text-muted" aria-label="Toggle menu">
+          <svg id="hamburgerIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileDrawer" class="md:hidden hidden theme-card border-b theme-border px-6 py-6">
+      <nav class="flex flex-col gap-4 text-base font-medium">
+        <a href="#about" class="mobile-nav-link theme-text-muted py-2 border-b theme-border">About</a>
+        <a href="#showcase" class="mobile-nav-link theme-text-muted py-2 border-b theme-border">Visuals</a>
+        <a href="#featured" class="mobile-nav-link theme-text-muted py-2 border-b theme-border">Featured Projects</a>
+        <a href="#skills" class="mobile-nav-link theme-text-muted py-2 border-b theme-border">Skills</a>
+        <a href="#portfolio" class="mobile-nav-link theme-text-muted py-2 border-b theme-border">Portfolio Gallery</a>
+        <a href="#services" class="mobile-nav-link theme-text-muted py-2 border-b theme-border">Services</a>
+        <a href="#process" class="mobile-nav-link theme-text-muted py-2 border-b theme-border">Work Process</a>
+        <a href="#contact" class="mobile-nav-link theme-text-muted py-2">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="pt-20">
+
+    <!-- ================= HERO SECTION ================= -->
+    <section id="hero" class="min-h-[88vh] flex items-center justify-center py-16 border-b theme-border relative">
+      <div class="max-w-7xl mx-auto px-6 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-7 flex flex-col items-start space-y-6">
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full theme-card border theme-border text-xs font-medium theme-text-muted shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="font-medium">Available for Freelance Projects</span>
+            </div>
+
+            <!-- MAIN HEADLINE: Helvetica Bold + Ws Paradose for "Powerful Visual" (Title Case) -->
+            <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl leading-[1.15]">
+              Turning Thoughts Into <span class="font-paradose theme-accent text-[1.12em] px-1 font-normal">Powerful Visual</span> Stories.
+            </h1>
+
+            <p class="text-base sm:text-lg theme-text-muted max-w-xl">
+              I'm <strong class="font-bold">Misbah Hadi</strong>, a Creative Artist and Video Editor specializing in high-retention YouTube editing, cinematic color grading, and commercial storytelling.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-4 pt-2 w-full sm:w-auto">
+              <a href="#portfolio" class="px-8 py-4 rounded-full bg-sky-500 text-white font-bold text-sm tracking-wide hover:bg-sky-400 hover:text-black transition-all shadow-[0_0_20px_rgba(56,189,248,0.3)]">
+                View My Work
+              </a>
+              <a href="https://wa.me/8801757205162?text=Hello%20Misbah,%20let's%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="px-8 py-4 rounded-full theme-card border theme-border hover:border-sky-500 font-semibold text-sm transition-all flex items-center gap-2">
+                <span>Let's Talk on WhatsApp</span>
+              </a>
+            </div>
+
+            <!-- FROSTED GLASS EFFECT STATS CARD (Years Exp, Projects, 25+ Countries) -->
+            <div class="pt-4 w-full max-w-xl">
+              <div class="glass-effect-card p-5 rounded-2xl grid grid-cols-3 gap-2 divide-x divide-white/15 dark:divide-white/15">
+                
+                <div class="px-3 text-center">
+                  <span class="text-2xl sm:text-3xl font-heading tracking-tight block text-white dark:text-white">4.5+</span>
+                  <span class="text-[11px] theme-text-muted uppercase font-semibold tracking-wider block mt-0.5">Years Exp</span>
+                </div>
+
+                <div class="px-3 text-center">
+                  <span class="text-2xl sm:text-3xl font-heading tracking-tight block text-white dark:text-white">50+</span>
+                  <span class="text-[11px] theme-text-muted uppercase font-semibold tracking-wider block mt-0.5">Projects</span>
+                </div>
+
+                <div class="px-3 text-center">
+                  <span class="text-2xl sm:text-3xl font-heading theme-accent tracking-tight block">25+</span>
+                  <span class="text-[11px] theme-text-muted uppercase font-semibold tracking-wider block mt-0.5">Countries</span>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Hero Image Box -->
+          <div class="lg:col-span-5 relative">
+            <div class="rounded-2xl overflow-hidden border theme-border theme-card shadow-2xl relative group">
+              <div class="aspect-[4/5] relative overflow-hidden bg-slate-900">
+                <img src="personal.jpg" 
+                     onerror="this.src='https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1000&q=80'" 
+                     alt="Misbah Hadi - Creative Artist" 
+                     class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                
+                <!-- Play Showreel Trigger -->
+                <button onclick="openProjectModal('proj-01')" class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-sky-500 text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-[0_0_25px_rgba(56,189,248,0.6)] cursor-pointer" aria-label="Watch Showreel">
+                  <svg class="w-6 h-6 fill-current translate-x-0.5" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </button>
+
+                <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-black/75 backdrop-blur-md border border-white/10 text-white">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <p class="text-[10px] uppercase tracking-wider text-sky-400 font-semibold">Lead Creative Artist</p>
+                      <p class="text-base font-heading mt-0.5">Misbah Hadi</p>
+                    </div>
+                    <span class="text-xs px-2.5 py-1 rounded bg-sky-500/20 text-sky-400 border border-sky-400/30">Bangladesh</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DUAL MARQUEE VISUAL SHOWCASE ================= -->
+    <section id="showcase" class="py-16 border-b theme-border overflow-hidden relative">
+      
+      <div class="max-w-7xl mx-auto px-6 mb-8 flex items-center justify-between">
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-widest theme-accent">Visual Index</span>
+          <h2 class="font-heading text-2xl sm:text-3xl mt-1">Creative Production & Artwork Gallery</h2>
+        </div>
+        <span class="text-xs theme-text-muted hidden sm:inline-block">Hover to pause • Click to expand</span>
+      </div>
+
+      <div class="marquee-wrapper space-y-6 marquee-fade-mask">
+        
+        <!-- ROW 1: Moves to the LEFT ← -->
+        <div class="flex overflow-hidden">
+          <div class="animate-marquee-left flex items-center gap-6">
+            
+            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-01')">
+              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Visual 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-black/70 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">THE GRIDLINE</div>
+              <div class="absolute bottom-3 left-3 right-3 text-xs text-white font-semibold flex justify-between items-center">
+                <span>Editorial Keyframe</span>
+                <span class="text-sky-400">4K ↗</span>
+              </div>
+            </div>
+
+            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-02')">
+              <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80" alt="Visual 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-pink-600/80 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">GUMMIZ</div>
+              <div class="absolute bottom-3 left-3 right-3 text-xs text-white font-semibold flex justify-between items-center">
+                <span>Commercial Color Grading</span>
+                <span class="text-sky-400">Play ↗</span>
+              </div>
+            </div>
+
+            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-03')">
+              <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80" alt="Visual 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-black/70 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">DON'T MAKE ME THINK</div>
+              <div class="absolute bottom-3 left-3 right-3 text-xs text-white font-semibold flex justify-between items-center">
+                <span>Social Media Hook Cut</span>
+                <span class="text-sky-400">View ↗</span>
+              </div>
+            </div>
+
+            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-04')">
+              <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=600&q=80" alt="Visual 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-sky-600/80 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">OH! MY COFFEE</div>
+              <div class="absolute bottom-3 left-3 right-3 text-xs text-white font-semibold flex justify-between items-center">
+                <span>UI / Mobile Motion</span>
+                <span class="text-sky-400">HD ↗</span>
+              </div>
+            </div>
+
+            <!-- Seamless Clones -->
+            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-01')">
+              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Visual 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-black/70 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">THE GRIDLINE</div>
+            </div>
+            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-02')">
+              <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80" alt="Visual 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-pink-600/80 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">GUMMIZ</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ROW 2: Moves to the RIGHT → -->
+        <div class="flex overflow-hidden">
+          <div class="animate-marquee-right flex items-center gap-6">
+            
+            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-01')">
+              <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=600&q=80" alt="Golf Visual" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-emerald-600/80 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">THE GOLF CLUB</div>
+              <div class="absolute bottom-3 left-3 right-3 text-xs text-white font-semibold flex justify-between items-center">
+                <span>3D CGI & Color Track</span>
+                <span class="text-sky-400">Play ↗</span>
+              </div>
+            </div>
+
+            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-02')">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Alpine Banking" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-indigo-600/80 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">ALPINE EMPOWER</div>
+              <div class="absolute bottom-3 left-3 right-3 text-xs text-white font-semibold flex justify-between items-center">
+                <span>Fintech Brand Video</span>
+                <span class="text-sky-400">Edit ↗</span>
+              </div>
+            </div>
+
+            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-03')">
+              <img src="https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=600&q=80" alt="Venex Energy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-amber-600/80 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">VENEX ENERGY</div>
+              <div class="absolute bottom-3 left-3 right-3 text-xs text-white font-semibold flex justify-between items-center">
+                <span>Documentary Montage</span>
+                <span class="text-sky-400">4K ↗</span>
+              </div>
+            </div>
+
+            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-04')">
+              <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" alt="Ramen Riot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-rose-600/80 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">RAMEN RIOT</div>
+              <div class="absolute bottom-3 left-3 right-3 text-xs text-white font-semibold flex justify-between items-center">
+                <span>Food Commercial Edit</span>
+                <span class="text-sky-400">Watch ↗</span>
+              </div>
+            </div>
+
+            <!-- Seamless Clones -->
+            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-01')">
+              <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=600&q=80" alt="Golf Visual" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-emerald-600/80 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">THE GOLF CLUB</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= ABOUT SECTION (LARGE PROMINENT NAME) ================= -->
+    <section id="about" class="py-24 border-b theme-border">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-5 relative">
+            <div class="rounded-2xl overflow-hidden border theme-border theme-card p-2">
+              <div class="aspect-[4/5] rounded-xl overflow-hidden relative bg-slate-900">
+                <img src="personal.jpg" 
+                     onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80'" 
+                     alt="Misbah Hadi" 
+                     class="w-full h-full object-cover object-top hover:scale-105 transition-all duration-500"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+                
+                <!-- PROMINENT NAME & TITLE OVERLAY -->
+                <div class="absolute bottom-5 left-5 right-5 text-white">
+                  <span class="text-[11px] text-sky-400 font-bold uppercase tracking-widest block">CREATIVE ARTIST</span>
+                  <!-- Enlarged Misbah Hadi Heading -->
+                  <h3 class="text-2xl sm:text-3xl font-heading font-extrabold tracking-tight text-white mt-1 mb-1">Misbah Hadi</h3>
+                  <p class="text-xs text-white/80 font-medium">4.5+ Years Experience • Available Worldwide</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest theme-accent">
+              <span class="w-8 h-px bg-sky-500"></span>
+              About Misbah
+            </div>
+            <h2 class="font-heading text-3xl sm:text-4xl">
+              Transforming raw footage into high-retention cinematic experiences.
+            </h2>
+            <p class="theme-text-muted text-base leading-relaxed">
+              I help brands, creators, and businesses turn raw footage into cohesive, high-impact stories that command attention, hold watch-time, and reinforce digital authority.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-4 rounded-xl theme-card border theme-border">
+                <div class="theme-accent font-bold text-sm">Targeted Pacing</div>
+                <p class="text-xs theme-text-muted mt-1">Structured narratives designed specifically for modern attention spans.</p>
+              </div>
+              <div class="p-4 rounded-xl theme-card border theme-border">
+                <div class="theme-accent font-bold text-sm">Full Post-Production</div>
+                <p class="text-xs theme-text-muted mt-1">End-to-end delivery: editing, sound design, color grading, and motion graphics.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STACKED STICKY SCROLL FEATURED PROJECTS ================= -->
+    <section id="featured" class="py-24 border-b theme-border relative">
+      <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+          <div>
+            <span class="text-xs font-semibold uppercase tracking-widest theme-accent">Selected Case Studies</span>
+            <h2 class="font-heading text-3xl sm:text-4xl mt-2">Featured Projects</h2>
+          </div>
+          <p class="text-sm theme-text-muted max-w-sm">
+            Scroll down to explore each featured production in sequential stacked depth.
+          </p>
+        </div>
+
+        <div id="featuredContainer" class="relative pb-16"></div>
+
+      </div>
+    </section>
+
+    <!-- ================= SKILLS SECTION ================= -->
+    <section id="skills" class="py-24 border-b theme-border opacity-95">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-16 text-center max-w-xl mx-auto">
+          <span class="pill-button-badge mb-3">TECHNICAL STACK</span>
+          <h2 class="font-heading text-3xl sm:text-4xl mt-2">Skills & Creative Arsenal</h2>
+        </div>
+        <div id="skillsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+      </div>
+    </section>
+
+    <!-- ================= PORTFOLIO GALLERY ================= -->
+    <section id="portfolio" class="py-24 border-b theme-border">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="pill-button-badge mb-3">PORTFOLIO ARCHIVE</span>
+          <h2 class="font-heading text-3xl sm:text-4xl mt-2">Selected Works & Cutdowns</h2>
+        </div>
+        <div id="portfolioFilterContainer" class="flex items-center justify-center flex-wrap gap-2 mb-12"></div>
+        <div id="portfolioGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+    </section>
+
+    <!-- ================= SERVICES SECTION ================= -->
+    <section id="services" class="py-24 border-b theme-border">
+      <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="pill-button-badge mb-3">WHAT I DO</span>
+          <h2 class="font-heading text-3xl sm:text-4xl tracking-tight">Specialized Services</h2>
+          <p class="text-xs sm:text-sm theme-text-muted mt-3 max-w-lg mx-auto">
+            High-retention editing and visual manipulation packages engineered to capture attention and scale digital presence.
+          </p>
+        </div>
+
+        <div id="servicesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+
+      </div>
+    </section>
+
+    <!-- ================= WORK PROCESS SECTION ================= -->
+    <section id="process" class="py-24 border-b theme-border">
+      <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="pill-button-badge mb-3">ROADMAP</span>
+          <h2 class="font-heading text-3xl sm:text-4xl tracking-tight">Work Process</h2>
+          <p class="text-xs sm:text-sm theme-text-muted mt-3 max-w-lg mx-auto">
+            A structured 5-step collaborative roadmap ensuring deadline adherence, transparent revisions, and top-tier fidelity.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+          
+          <div class="p-6 rounded-2xl theme-card border theme-border interactive-glow-card cursor-default group">
+            <span class="font-heading text-3xl theme-accent group-hover:scale-110 transition-transform inline-block">01</span>
+            <h3 class="text-base font-heading mt-3">Discover</h3>
+            <p class="text-xs theme-text-muted mt-2 leading-relaxed">Analyze target audience, story pacing, references, and visual style.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl theme-card border theme-border interactive-glow-card cursor-default group">
+            <span class="font-heading text-3xl theme-accent group-hover:scale-110 transition-transform inline-block">02</span>
+            <h3 class="text-base font-heading mt-3">Plan</h3>
+            <p class="text-xs theme-text-muted mt-2 leading-relaxed">Ingest footage assets, paper-edit structure, and map sound architecture.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl theme-card border theme-border interactive-glow-card cursor-default group">
+            <span class="font-heading text-3xl theme-accent group-hover:scale-110 transition-transform inline-block">03</span>
+            <h3 class="text-base font-heading mt-3">Edit</h3>
+            <p class="text-xs theme-text-muted mt-2 leading-relaxed">Assemble precision cuts, hook pacing, narrative rhythm, and visual flow.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl theme-card border theme-border interactive-glow-card cursor-default group">
+            <span class="font-heading text-3xl theme-accent group-hover:scale-110 transition-transform inline-block">04</span>
+            <h3 class="text-base font-heading mt-3">Refine</h3>
+            <p class="text-xs theme-text-muted mt-2 leading-relaxed">Apply cinematic color grading, surgical audio mixing, and motion graphics.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl theme-card border theme-border interactive-glow-card cursor-default group">
+            <span class="font-heading text-3xl theme-accent group-hover:scale-110 transition-transform inline-block">05</span>
+            <h3 class="text-base font-heading mt-3">Deliver</h3>
+            <p class="text-xs theme-text-muted mt-2 leading-relaxed">Export master 4K ProRes/H.265 files optimized for all digital platforms.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= CONTACT SECTION ================= -->
+    <section id="contact" class="py-24 border-t theme-border">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          
+          <div class="lg:col-span-5 space-y-6">
+            <span class="pill-button-badge mb-1">DIRECT CONTACT</span>
+            <h2 class="font-heading text-3xl sm:text-4xl">Let's Discuss Your Project.</h2>
+            <p class="text-sm theme-text-muted">Chat with me directly on WhatsApp or drop a project brief below.</p>
+            
+            <div class="space-y-4 pt-4">
+              
+              <!-- Card 1: WhatsApp / Phone -->
+              <a href="https://wa.me/8801757205162" target="_blank" rel="noopener noreferrer" class="p-4 rounded-2xl theme-card border theme-border flex items-center gap-4 interactive-glow-card block cursor-pointer group">
+                <div class="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-10.416c-4.418 0-8 3.582-8 8 0 1.411.366 2.739 1.004 3.896l-1.043 3.812 3.902-1.024c1.121.614 2.404.962 3.769.962 4.418 0 8-3.582 8-8s-3.582-8.846-8-8.846zm0 14.4c-1.184 0-2.324-.316-3.317-.899l-.238-.141-2.47.648.66-2.406-.155-.246c-.64-1.018-.98-2.197-.98-3.406 0-3.529 2.871-6.4 6.4-6.4 3.528 0 6.4 2.871 6.4 6.4 0 3.529-2.872 6.4-6.4 6.4z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs theme-text-muted font-medium">WhatsApp & Direct Phone</p>
+                  <p class="text-sm font-heading theme-accent mt-0.5">+880 1757-205162</p>
+                </div>
+              </a>
+
+              <!-- Card 2: Email -->
+              <a href="mailto:misbahhadi.me@gmail.com" class="p-4 rounded-2xl theme-card border theme-border flex items-center gap-4 interactive-glow-card block cursor-pointer group">
+                <div class="w-11 h-11 rounded-xl bg-sky-500/10 border border-sky-400/30 text-sky-400 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(56,189,248,0.15)]">
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs theme-text-muted font-medium">Official Inquiries & Email</p>
+                  <p class="text-sm font-heading theme-accent mt-0.5">misbahhadi.me@gmail.com</p>
+                </div>
+              </a>
+
+            </div>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="p-8 rounded-2xl theme-card border theme-border shadow-xl">
+              <form id="contactForm" class="space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label class="block text-xs font-semibold theme-text-muted uppercase mb-2">Name *</label>
+                    <input type="text" id="formName" required placeholder="Alex Morgan" class="w-full px-4 py-3 rounded-xl theme-card border theme-border text-sm focus:border-sky-500 outline-none">
+                  </div>
+                  <div>
+                    <label class="block text-xs font-semibold theme-text-muted uppercase mb-2">Email *</label>
+                    <input type="email" id="formEmail" required placeholder="alex@creator.com" class="w-full px-4 py-3 rounded-xl theme-card border theme-border text-sm focus:border-sky-500 outline-none">
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold theme-text-muted uppercase mb-2">Project Type</label>
+                  <select id="formProjectType" class="w-full px-4 py-3 rounded-xl theme-card border theme-border text-sm focus:border-sky-500 outline-none">
+                    <option>YouTube Video Editing</option>
+                    <option>Short-form Viral Reels/TikTok</option>
+                    <option>Commercial / Ad Edit</option>
+                    <option>Cinematic Color Grading</option>
+                    <option>Graphic Design & Manipulation</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold theme-text-muted uppercase mb-2">Brief *</label>
+                  <textarea id="formMessage" required rows="4" placeholder="Tell me about your goals, footage, and timeline..." class="w-full px-4 py-3 rounded-xl theme-card border theme-border text-sm focus:border-sky-500 outline-none resize-none"></textarea>
+                </div>
+                <button type="submit" id="submitBtn" class="w-full py-4 rounded-xl bg-sky-500 text-white font-bold text-sm uppercase tracking-wider hover:bg-sky-400 hover:text-black transition-all cursor-pointer">
+                  Send Message
+                </button>
+                <div id="formSuccessNotice" class="p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/40 text-emerald-400 text-xs hidden">
+                  ✓ Message dispatched! Misbah will respond within 24 hours.
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="border-t theme-border py-12 text-xs theme-text-muted text-center">
+    <p>© 2026 Misbah Hadi. All rights reserved.</p>
+  </footer>
+
+  <!-- ================= PROJECT MODAL ================= -->
+  <div id="projectModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-xl overflow-y-auto" role="dialog">
+    <div class="min-h-screen px-4 py-12 flex items-center justify-center">
+      <div class="w-full max-w-3xl theme-card border theme-border rounded-2xl overflow-hidden relative text-left shadow-2xl">
+        <div class="p-4 border-b theme-border flex items-center justify-between">
+          <span id="modalCategoryBadge" class="text-xs font-bold theme-accent">Category</span>
+          <button onclick="closeModal()" class="p-2 theme-text-muted hover:text-sky-500 font-bold text-base cursor-pointer">✕</button>
+        </div>
+        <div id="modalMediaContainer" class="bg-black aspect-video-custom"></div>
+        <div class="p-6 space-y-4">
+          <h3 id="modalTitle" class="font-heading text-2xl">Title</h3>
+          <p id="modalDescription" class="text-xs theme-text-muted leading-relaxed">Description</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    const portfolioProjects = [
+      {
+        id: "proj-01",
+        title: "Cinematic Visual Storytelling Showreel",
+        category: "Commercial",
+        featured: true,
+        year: "2025",
+        client: "Commercial Spot",
+        thumbnail: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80",
+        youtubeId: "QPRYvYT2m-c",
+        description: "A high-octane visual montage demonstrating pacing, seamless speed-ramps, and cinematic film grading.",
+        tools: ["Premiere Pro", "After Effects", "DaVinci Resolve"]
+      },
+      {
+        id: "proj-02",
+        title: "High-Retention YouTube Documentary",
+        category: "YouTube",
+        featured: true,
+        year: "2025",
+        client: "Creator Channel",
+        thumbnail: "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80",
+        youtubeId: "QPRYvYT2m-c",
+        description: "Paced long-form video essay with bespoke kinetic subtitles, historical maps, and dramatic sound beds.",
+        tools: ["Premiere Pro", "Photoshop", "After Effects"]
+      },
+      {
+        id: "proj-03",
+        title: "Viral Short-Form Motion Hooks",
+        category: "Short-form",
+        featured: true,
+        year: "2025",
+        client: "Personal Brand",
+        thumbnail: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80",
+        youtubeId: "QPRYvYT2m-c",
+        description: "Fast-paced TikTok and Reels edits engineered with kinetic typography, sound bites, and visual pattern interrupts.",
+        tools: ["CapCut Pro", "After Effects"]
+      },
+      {
+        id: "proj-04",
+        title: "Cyberpunk Visual Manipulation",
+        category: "Manipulation Graphics",
+        featured: true,
+        year: "2024",
+        client: "Artwork Series",
+        thumbnail: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=1200&q=80",
+        youtubeId: "QPRYvYT2m-c",
+        description: "Composite manipulation blending photographic layers, custom atmospheric lighting, and futuristic grading.",
+        tools: ["Photoshop", "Lightroom"]
+      }
+    ];
+
+    const skillsData = [
+      { 
+        category: "Video Editing", 
+        desc: "Premiere Pro, DaVinci Resolve, CapCut Pro - High retention cuts." 
+      },
+      { 
+        category: "Graphic Design", 
+        desc: "Photoshop, Illustrator, Photo Editing, Photo Manipulation, Typography Expert." 
+      },
+      { 
+        category: "Color Grading", 
+        desc: "Filmic look development, balancing, and skin-tone perfection." 
+      },
+      { 
+        category: "Motion & Branding", 
+        desc: "After Effects - Dynamic typography, thumbnails, hooks, and VFX." 
+      }
+    ];
+
+    const servicesData = [
+      { num: "01", title: "YouTube Video Editing", desc: "Full retention-focused editing for long-form channels." },
+      { num: "02", title: "Short-form Content", desc: "Dynamic Reels/TikTok edits with kinetic captions." },
+      { num: "03", title: "Cinematic Editing", desc: "Commercial spots and cinematic storytelling." },
+      { num: "04", title: "Color Grading", desc: "Professional color science and filmic looks." }
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      
+      initTheme();
+      initBubbleCursor();
+
+      // Render Skills
+      document.getElementById("skillsGrid").innerHTML = skillsData.map(s => `
+        <div class="p-6 rounded-2xl theme-card border theme-border interactive-glow-card cursor-default">
+          <h3 class="font-heading text-base">${s.category}</h3>
+          <p class="text-xs theme-text-muted mt-2 leading-relaxed">${s.desc}</p>
+        </div>
+      `).join('');
+
+      // Render Stacked Sticky Featured Projects (100% Equal Size)
+      renderStackedFeaturedProjects();
+
+      // Render Filters & Portfolio
+      const cats = ["All", "YouTube", "Short-form", "Commercial", "Manipulation Graphics"];
+      document.getElementById("portfolioFilterContainer").innerHTML = cats.map(c => `
+        <button onclick="filterPortfolio('${c}')" class="portfolio-btn px-4 py-2 rounded-full text-xs font-semibold border ${c === 'All' ? 'bg-sky-500 text-white border-sky-500' : 'theme-card theme-text-muted theme-border'}">${c}</button>
+      `).join('');
+      renderPortfolio("All");
+
+      // Render Services
+      document.getElementById("servicesGrid").innerHTML = servicesData.map(s => `
+        <div class="p-6 rounded-2xl theme-card border theme-border interactive-glow-card cursor-default flex flex-col justify-between group">
+          <div>
+            <span class="font-heading text-sm theme-accent font-bold">${s.num}</span>
+            <h3 class="text-base font-heading mt-2 group-hover:text-sky-400 transition-colors">${s.title}</h3>
+            <p class="text-xs theme-text-muted mt-2 leading-relaxed">${s.desc}</p>
+          </div>
+          <div class="mt-6 pt-4 border-t theme-border flex items-center justify-between text-xs theme-text-muted">
+            <span>High Retention</span>
+            <span class="text-sky-400">↗</span>
+          </div>
+        </div>
+      `).join('');
+
+      // Mobile Menu Toggle
+      const menuBtn = document.getElementById("mobileMenuBtn");
+      const drawer = document.getElementById("mobileDrawer");
+      menuBtn.addEventListener("click", () => {
+        drawer.classList.toggle("hidden");
+        document.getElementById("hamburgerIcon").classList.toggle("hidden");
+        document.getElementById("closeIcon").classList.toggle("hidden");
+      });
+
+      // Contact Form Submission
+      document.getElementById("contactForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        document.getElementById("submitBtn").innerText = "Sending...";
+        setTimeout(() => {
+          document.getElementById("contactForm").reset();
+          document.getElementById("submitBtn").innerText = "Send Message";
+          document.getElementById("formSuccessNotice").classList.remove("hidden");
+        }, 1000);
+      });
+    });
+
+    /**
+     * RENDER 100% UNIFORM STACKED FEATURED PROJECTS
+     */
+    function renderStackedFeaturedProjects() {
+      const container = document.getElementById("featuredContainer");
+      if (!container) return;
+
+      const featured = portfolioProjects.filter(p => p.featured);
+
+      container.innerHTML = featured.map((p, idx) => {
+        const topOffsetDesktop = 6.5 + (idx * 1.5);
+        const zIndex = 10 + idx;
+        const marginBottom = idx === featured.length - 1 ? '0' : '6rem';
+
+        return `
+          <div class="stacked-project-card rounded-3xl overflow-hidden border theme-border theme-card w-full lg:h-[390px]"
+               style="top: ${topOffsetDesktop}rem; z-index: ${zIndex}; margin-bottom: ${marginBottom};">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 items-stretch h-full">
+              
+              <!-- Left Image/Video Container -->
+              <div class="lg:col-span-7 h-[240px] sm:h-[280px] lg:h-full relative bg-black overflow-hidden group flex-shrink-0">
+                <img src="${p.thumbnail}" alt="${p.title}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                
+                <!-- Play Button -->
+                <button onclick="openProjectModal('${p.id}')" class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-sky-500 text-white flex items-center justify-center shadow-[0_0_25px_rgba(56,189,248,0.5)] group-hover:scale-110 transition-transform cursor-pointer" aria-label="Play ${p.title}">
+                  <svg class="w-7 h-7 fill-current translate-x-0.5" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </button>
+
+                <!-- Project Badge -->
+                <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/10 text-xs font-semibold text-sky-400">
+                  Project 0${idx + 1}
+                </div>
+              </div>
+
+              <!-- Right Information Column -->
+              <div class="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between h-full space-y-4">
+                <div>
+                  <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider theme-accent">
+                    <span>${p.category}</span> • <span>${p.year}</span>
+                  </div>
+                  
+                  <h3 class="font-heading text-xl sm:text-2xl lg:text-[26px] leading-snug mt-2 tracking-tight line-clamp-2">
+                    ${p.title}
+                  </h3>
+                  
+                  <p class="text-xs sm:text-sm theme-text-muted mt-3 leading-relaxed line-clamp-3">
+                    ${p.description}
+                  </p>
+
+                  <div class="flex flex-wrap gap-1.5 mt-4">
+                    ${p.tools.map(t => `<span class="px-2.5 py-1 rounded-lg theme-card border theme-border text-[11px] font-medium theme-text-muted">${t}</span>`).join('')}
+                  </div>
+                </div>
+
+                <div class="pt-4 border-t theme-border flex items-center justify-between">
+                  <button onclick="openProjectModal('${p.id}')" class="text-xs sm:text-sm font-bold theme-accent hover:underline flex items-center gap-1.5 cursor-pointer">
+                    <span>Watch Case Study & Cut</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                  </button>
+                  <span class="text-xs font-semibold theme-text-muted">4K UHD</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    function initTheme() {
+      const toggleBtn = document.getElementById("themeToggleBtn");
+      const html = document.documentElement;
+
+      const savedTheme = localStorage.getItem("theme") || "dark";
+      if (savedTheme === "light") {
+        html.classList.remove("dark");
+      } else {
+        html.classList.add("dark");
+      }
+
+      toggleBtn.addEventListener("click", () => {
+        if (html.classList.contains("dark")) {
+          html.classList.remove("dark");
+          localStorage.setItem("theme", "light");
+        } else {
+          html.classList.add("dark");
+          localStorage.setItem("theme", "dark");
+        }
+      });
+    }
+
+    function initBubbleCursor() {
+      const bubble = document.getElementById("mouseBubble");
+      if (!bubble || window.matchMedia("(pointer: coarse)").matches) return;
+
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let bubbleX = mouseX;
+      let bubbleY = mouseY;
+
+      window.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      function animate() {
+        bubbleX += (mouseX - bubbleX) * 0.12;
+        bubbleY += (mouseY - bubbleY) * 0.12;
+        bubble.style.transform = `translate(${bubbleX}px, ${bubbleY}px) translate(-50%, -50%)`;
+        requestAnimationFrame(animate);
+      }
+      animate();
+
+      document.querySelectorAll("a, button, input, textarea, select, .cursor-pointer, .interactive-glow-card").forEach(el => {
+        el.addEventListener("mouseenter", () => bubble.classList.add("bubble-active"));
+        el.addEventListener("mouseleave", () => bubble.classList.remove("bubble-active"));
+      });
+    }
+
+    window.filterPortfolio = function(cat) {
+      document.querySelectorAll(".portfolio-btn").forEach(b => {
+        if (b.innerText === cat) {
+          b.className = "portfolio-btn px-4 py-2 rounded-full text-xs font-semibold border bg-sky-500 text-white border-sky-500";
+        } else {
+          b.className = "portfolio-btn px-4 py-2 rounded-full text-xs font-semibold border theme-card theme-text-muted theme-border";
+        }
+      });
+      renderPortfolio(cat);
+    };
+
+    function renderPortfolio(cat) {
+      const filtered = cat === "All" ? portfolioProjects : portfolioProjects.filter(p => p.category === cat);
+      document.getElementById("portfolioGrid").innerHTML = filtered.map(p => `
+        <div class="rounded-xl theme-card border theme-border overflow-hidden interactive-glow-card">
+          <div class="aspect-video relative bg-black">
+            <img src="${p.thumbnail}" alt="${p.title}" class="w-full h-full object-cover opacity-80">
+            <button onclick="openProjectModal('${p.id}')" class="absolute inset-0 m-auto w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center cursor-pointer">▶</button>
+          </div>
+          <div class="p-4">
+            <span class="text-[10px] theme-accent font-bold uppercase">${p.category}</span>
+            <h4 class="font-heading text-sm mt-1">${p.title}</h4>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    window.openProjectModal = function(id) {
+      const p = portfolioProjects.find(item => item.id === id) || portfolioProjects[0];
+      document.getElementById("modalTitle").innerText = p.title;
+      document.getElementById("modalCategoryBadge").innerText = p.category;
+      document.getElementById("modalDescription").innerText = p.description;
+      document.getElementById("modalMediaContainer").innerHTML = `
+        <iframe src="https://www.youtube-nocookie.com/embed/${p.youtubeId}?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      `;
+      document.getElementById("projectModal").classList.remove("hidden");
+    };
+
+    window.closeModal = function() {
+      document.getElementById("modalMediaContainer").innerHTML = "";
+      document.getElementById("projectModal").classList.add("hidden");
+    };
+  </script>
+</body>
+</html>

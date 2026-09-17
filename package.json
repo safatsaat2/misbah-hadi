@@ -1,0 +1,10 @@
+{
+  "name": "misbah-hadi-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio site for Misbah Hadi — Creative Artist & Video Editor",
+  "scripts": {
+    "dev": "npx --yes serve .",
+    "start": "npx --yes serve ."
+  }
+}
