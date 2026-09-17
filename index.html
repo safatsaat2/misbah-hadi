@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   
   <title>Misbah Hadi — Creative Artist & Video Editor</title>
   <meta name="description" content="Portfolio of Misbah Hadi, Creative Artist & Video Editor.">
@@ -218,15 +219,24 @@
 
     .aspect-video-custom {
       position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      min-height: 220px;
       overflow: hidden;
+      background: #000;
     }
     .aspect-video-custom iframe {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       border: 0;
+    }
+
+    #projectModal:not(.hidden) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   </style>
 </head>
@@ -354,19 +364,18 @@
 
           </div>
 
-          <!-- Hero Image Box -->
+          <!-- Hero Video Thumbnail -->
           <div class="lg:col-span-5 relative">
             <div class="rounded-2xl overflow-hidden border theme-border theme-card shadow-2xl relative group">
               <div class="aspect-[4/5] relative overflow-hidden bg-slate-900">
-                <img src="personal.jpg" 
-                     onerror="this.src='https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1000&q=80'" 
-                     alt="Misbah Hadi - Creative Artist" 
-                     class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                <img src="https://img.youtube.com/vi/QXToS4eWN3A/maxresdefault.jpg" 
+                     onerror="this.onerror=null; this.src='https://img.youtube.com/vi/QXToS4eWN3A/hqdefault.jpg'" 
+                     alt="Misbah Hadi - Showreel" 
+                     class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                 
-                <!-- Play Showreel Trigger -->
-                <button onclick="openProjectModal('proj-01')" class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-sky-500 text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-[0_0_25px_rgba(56,189,248,0.6)] cursor-pointer" aria-label="Watch Showreel">
+                <button onclick="openProjectModal('hero')" class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-sky-500 text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-[0_0_25px_rgba(56,189,248,0.6)] cursor-pointer z-10" aria-label="Watch Showreel">
                   <svg class="w-6 h-6 fill-current translate-x-0.5" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                 </button>
 
@@ -768,9 +777,8 @@
   </footer>
 
   <!-- ================= PROJECT MODAL ================= -->
-  <div id="projectModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-xl overflow-y-auto" role="dialog">
-    <div class="min-h-screen px-4 py-12 flex items-center justify-center">
-      <div class="w-full max-w-3xl theme-card border theme-border rounded-2xl overflow-hidden relative text-left shadow-2xl">
+  <div id="projectModal" class="fixed inset-0 z-[100] hidden bg-black/85 backdrop-blur-xl overflow-y-auto p-4 sm:p-8" role="dialog" aria-modal="true" onclick="closeModalOnBackdrop(event)">
+      <div class="w-full max-w-3xl theme-card border theme-border rounded-2xl overflow-hidden relative text-left shadow-2xl mx-auto" onclick="event.stopPropagation()">
         <div class="p-4 border-b theme-border flex items-center justify-between">
           <span id="modalCategoryBadge" class="text-xs font-bold theme-accent">Category</span>
           <button onclick="closeModal()" class="p-2 theme-text-muted hover:text-sky-500 font-bold text-base cursor-pointer">✕</button>
@@ -781,59 +789,91 @@
           <p id="modalDescription" class="text-xs theme-text-muted leading-relaxed">Description</p>
         </div>
       </div>
-    </div>
   </div>
 
   <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
+    function youtubeThumbnail(id) {
+      return `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+    }
+
+    function buildYoutubeEmbedUrl(videoId, extraParams = {}) {
+      const params = new URLSearchParams({
+        autoplay: "1",
+        rel: "0",
+        modestbranding: "1",
+        playsinline: "1",
+        enablejsapi: "1",
+        ...extraParams
+      });
+
+      if (window.location.protocol.startsWith("http")) {
+        params.set("origin", window.location.origin);
+      }
+
+      return `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
+    }
+
     const portfolioProjects = [
       {
+        id: "hero",
+        title: "Creative Artist Showreel",
+        category: "Showreel",
+        featured: false,
+        year: "2025",
+        client: "Misbah Hadi",
+        thumbnail: youtubeThumbnail("QXToS4eWN3A"),
+        youtubeId: "QXToS4eWN3A",
+        description: "A showcase of creative video editing, pacing, and visual storytelling.",
+        tools: ["Premiere Pro", "After Effects", "DaVinci Resolve"]
+      },
+      {
         id: "proj-01",
-        title: "Cinematic Visual Storytelling Showreel",
-        category: "Commercial",
+        title: "Crafting Powerful Motivational Stories",
+        category: "YouTube",
         featured: true,
         year: "2025",
-        client: "Commercial Spot",
-        thumbnail: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80",
-        youtubeId: "QPRYvYT2m-c",
-        description: "A high-octane visual montage demonstrating pacing, seamless speed-ramps, and cinematic film grading.",
+        client: "Motivational Content",
+        thumbnail: youtubeThumbnail("fsS10y7t-58"),
+        youtubeId: "fsS10y7t-58",
+        description: "Motivational storytelling edit built for emotional impact, retention, and cinematic pacing.",
         tools: ["Premiere Pro", "After Effects", "DaVinci Resolve"]
       },
       {
         id: "proj-02",
-        title: "High-Retention YouTube Documentary",
-        category: "YouTube",
+        title: "Turning Sales Into Stories | VSL Video",
+        category: "Commercial",
         featured: true,
         year: "2025",
-        client: "Creator Channel",
-        thumbnail: "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80",
-        youtubeId: "QPRYvYT2m-c",
-        description: "Paced long-form video essay with bespoke kinetic subtitles, historical maps, and dramatic sound beds.",
-        tools: ["Premiere Pro", "Photoshop", "After Effects"]
+        client: "VSL Campaign",
+        thumbnail: youtubeThumbnail("JJqcD2OK-tQ"),
+        youtubeId: "JJqcD2OK-tQ",
+        description: "Short-form VSL edit engineered to hook viewers fast and drive conversions with clear narrative flow.",
+        tools: ["Premiere Pro", "CapCut Pro", "After Effects"]
       },
       {
         id: "proj-03",
-        title: "Viral Short-Form Motion Hooks",
+        title: "Raw Moments, Refined | UGC Video",
         category: "Short-form",
         featured: true,
         year: "2025",
-        client: "Personal Brand",
-        thumbnail: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80",
-        youtubeId: "QPRYvYT2m-c",
-        description: "Fast-paced TikTok and Reels edits engineered with kinetic typography, sound bites, and visual pattern interrupts.",
-        tools: ["CapCut Pro", "After Effects"]
+        client: "UGC Brand Content",
+        thumbnail: youtubeThumbnail("XKZJM0dn7Vs"),
+        youtubeId: "XKZJM0dn7Vs",
+        description: "Authentic UGC-style edit polished with tight cuts, captions, and platform-native pacing.",
+        tools: ["CapCut Pro", "Premiere Pro", "After Effects"]
       },
       {
         id: "proj-04",
-        title: "Cyberpunk Visual Manipulation",
-        category: "Manipulation Graphics",
+        title: "Turning Moments Into Memories | Party Video",
+        category: "Commercial",
         featured: true,
-        year: "2024",
-        client: "Artwork Series",
-        thumbnail: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=1200&q=80",
-        youtubeId: "QPRYvYT2m-c",
-        description: "Composite manipulation blending photographic layers, custom atmospheric lighting, and futuristic grading.",
-        tools: ["Photoshop", "Lightroom"]
+        year: "2025",
+        client: "Event Highlight",
+        thumbnail: youtubeThumbnail("PCb8lIYaTLo"),
+        youtubeId: "PCb8lIYaTLo",
+        description: "Event highlight reel capturing energy, rhythm, and memorable moments with cinematic transitions.",
+        tools: ["Premiere Pro", "DaVinci Resolve", "After Effects"]
       }
     ];
 
@@ -944,7 +984,7 @@
               
               <!-- Left Image/Video Container -->
               <div class="lg:col-span-7 h-[240px] sm:h-[280px] lg:h-full relative bg-black overflow-hidden group flex-shrink-0">
-                <img src="${p.thumbnail}" alt="${p.title}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90" loading="lazy">
+                <img src="${p.thumbnail}" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/${p.youtubeId}/hqdefault.jpg'" alt="${p.title}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90" loading="lazy">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                 
                 <!-- Play Button -->
@@ -1056,11 +1096,12 @@
     };
 
     function renderPortfolio(cat) {
-      const filtered = cat === "All" ? portfolioProjects : portfolioProjects.filter(p => p.category === cat);
+      const visibleProjects = portfolioProjects.filter(p => p.id !== "hero");
+      const filtered = cat === "All" ? visibleProjects : visibleProjects.filter(p => p.category === cat);
       document.getElementById("portfolioGrid").innerHTML = filtered.map(p => `
         <div class="rounded-xl theme-card border theme-border overflow-hidden interactive-glow-card">
           <div class="aspect-video relative bg-black">
-            <img src="${p.thumbnail}" alt="${p.title}" class="w-full h-full object-cover opacity-80">
+            <img src="${p.thumbnail}" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/${p.youtubeId}/hqdefault.jpg'" alt="${p.title}" class="w-full h-full object-cover opacity-80">
             <button onclick="openProjectModal('${p.id}')" class="absolute inset-0 m-auto w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center cursor-pointer">▶</button>
           </div>
           <div class="p-4">
@@ -1073,19 +1114,46 @@
 
     window.openProjectModal = function(id) {
       const p = portfolioProjects.find(item => item.id === id) || portfolioProjects[0];
+      const modal = document.getElementById("projectModal");
+      const container = document.getElementById("modalMediaContainer");
+
       document.getElementById("modalTitle").innerText = p.title;
       document.getElementById("modalCategoryBadge").innerText = p.category;
       document.getElementById("modalDescription").innerText = p.description;
-      document.getElementById("modalMediaContainer").innerHTML = `
-        <iframe src="https://www.youtube-nocookie.com/embed/${p.youtubeId}?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      `;
-      document.getElementById("projectModal").classList.remove("hidden");
+
+      container.innerHTML = "";
+
+      const extraParams = p.id === "hero" ? { si: "rlErPkveC1J0vVj1" } : {};
+      const iframe = document.createElement("iframe");
+      iframe.src = buildYoutubeEmbedUrl(p.youtubeId, extraParams);
+      iframe.title = p.title;
+      iframe.className = "absolute inset-0 w-full h-full border-0";
+      iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+      iframe.setAttribute("allowfullscreen", "");
+      iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+      container.appendChild(iframe);
+
+      modal.classList.remove("hidden");
+      document.body.classList.add("overflow-hidden");
     };
 
     window.closeModal = function() {
       document.getElementById("modalMediaContainer").innerHTML = "";
       document.getElementById("projectModal").classList.add("hidden");
+      document.body.classList.remove("overflow-hidden");
     };
+
+    window.closeModalOnBackdrop = function(event) {
+      if (event.target.id === "projectModal") {
+        closeModal();
+      }
+    };
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !document.getElementById("projectModal").classList.contains("hidden")) {
+        closeModal();
+      }
+    });
   </script>
 </body>
 </html>
