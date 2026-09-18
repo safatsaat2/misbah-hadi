@@ -165,12 +165,14 @@
     .animate-marquee-left {
       display: flex;
       width: max-content;
-      animation: marqueeLeft 32s linear infinite;
+      will-change: transform;
+      animation: marqueeLeft 70s linear infinite;
     }
     .animate-marquee-right {
       display: flex;
       width: max-content;
-      animation: marqueeRight 32s linear infinite;
+      will-change: transform;
+      animation: marqueeRight 70s linear infinite;
     }
 
     .marquee-wrapper:hover .animate-marquee-left,
@@ -181,6 +183,45 @@
     .marquee-fade-mask {
       mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
       -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+
+    .showcase-item {
+      background-color: var(--bg-card);
+      width: calc((100vw - 7.5rem) / 6);
+      height: calc((100vw - 7.5rem) / 6);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .showcase-item {
+        width: calc((100vw - 4.5rem) / 4);
+        height: calc((100vw - 4.5rem) / 4);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .showcase-item {
+        width: calc((100vw - 2rem) / 2);
+        height: calc((100vw - 2rem) / 2);
+      }
+    }
+
+    .modal-image-view {
+      aspect-ratio: auto;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background: #000;
+    }
+
+    .modal-image-view img {
+      max-width: 100%;
+      max-height: 85vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
     }
 
     /* UNIFORM STACKED STICKY CARDS */
@@ -239,7 +280,37 @@
       justify-content: center;
     }
 
+    .scroll-reveal {
+      opacity: 0;
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .scroll-reveal-up { transform: translateY(36px); }
+    .scroll-reveal-left { transform: translateX(-40px); }
+    .scroll-reveal-right { transform: translateX(40px); }
+    .scroll-reveal-scale { transform: scale(0.95); }
+
+    .scroll-reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+
   </style>
+  <script>
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+  </script>
 </head>
 <body class="font-sans antialiased overflow-x-hidden min-h-screen relative selection:bg-sky-400 selection:text-black">
 
@@ -409,120 +480,12 @@
       </div>
 
       <div class="marquee-wrapper space-y-6 marquee-fade-mask">
-        
-        <!-- ROW 1: Moves to the LEFT ← -->
-        <div class="flex overflow-hidden">
-          <div class="animate-marquee-left flex items-center gap-6">
-            
-            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-01')">
-              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Visual 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-black/70 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">THE GRIDLINE</div>
-              <div class="absolute bottom-3 left-3 right-3 text-xs text-white font-semibold flex justify-between items-center">
-                <span>Editorial Keyframe</span>
-                <span class="text-sky-400">4K ↗</span>
-              </div>
-            </div>
-
-            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-02')">
-              <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80" alt="Visual 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-pink-600/80 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">GUMMIZ</div>
-              <div class="absolute bottom-3 left-3 right-3 text-xs text-white font-semibold flex justify-between items-center">
-                <span>Commercial Color Grading</span>
-                <span class="text-sky-400">Play ↗</span>
-              </div>
-            </div>
-
-            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-03')">
-              <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80" alt="Visual 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-black/70 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">DON'T MAKE ME THINK</div>
-              <div class="absolute bottom-3 left-3 right-3 text-xs text-white font-semibold flex justify-between items-center">
-                <span>Social Media Hook Cut</span>
-                <span class="text-sky-400">View ↗</span>
-              </div>
-            </div>
-
-            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-04')">
-              <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=600&q=80" alt="Visual 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-sky-600/80 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">OH! MY COFFEE</div>
-              <div class="absolute bottom-3 left-3 right-3 text-xs text-white font-semibold flex justify-between items-center">
-                <span>UI / Mobile Motion</span>
-                <span class="text-sky-400">HD ↗</span>
-              </div>
-            </div>
-
-            <!-- Seamless Clones -->
-            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-01')">
-              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Visual 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-black/70 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">THE GRIDLINE</div>
-            </div>
-            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-02')">
-              <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80" alt="Visual 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-pink-600/80 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">GUMMIZ</div>
-            </div>
-
-          </div>
+        <div class="overflow-hidden">
+          <div id="marqueeRowTop" class="animate-marquee-left flex items-center gap-4 sm:gap-6"></div>
         </div>
-
-        <!-- ROW 2: Moves to the RIGHT → -->
-        <div class="flex overflow-hidden">
-          <div class="animate-marquee-right flex items-center gap-6">
-            
-            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-01')">
-              <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=600&q=80" alt="Golf Visual" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-emerald-600/80 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">THE GOLF CLUB</div>
-              <div class="absolute bottom-3 left-3 right-3 text-xs text-white font-semibold flex justify-between items-center">
-                <span>3D CGI & Color Track</span>
-                <span class="text-sky-400">Play ↗</span>
-              </div>
-            </div>
-
-            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-02')">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Alpine Banking" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-indigo-600/80 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">ALPINE EMPOWER</div>
-              <div class="absolute bottom-3 left-3 right-3 text-xs text-white font-semibold flex justify-between items-center">
-                <span>Fintech Brand Video</span>
-                <span class="text-sky-400">Edit ↗</span>
-              </div>
-            </div>
-
-            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-03')">
-              <img src="https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=600&q=80" alt="Venex Energy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-amber-600/80 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">VENEX ENERGY</div>
-              <div class="absolute bottom-3 left-3 right-3 text-xs text-white font-semibold flex justify-between items-center">
-                <span>Documentary Montage</span>
-                <span class="text-sky-400">4K ↗</span>
-              </div>
-            </div>
-
-            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-04')">
-              <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" alt="Ramen Riot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-rose-600/80 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">RAMEN RIOT</div>
-              <div class="absolute bottom-3 left-3 right-3 text-xs text-white font-semibold flex justify-between items-center">
-                <span>Food Commercial Edit</span>
-                <span class="text-sky-400">Watch ↗</span>
-              </div>
-            </div>
-
-            <!-- Seamless Clones -->
-            <div class="w-[280px] sm:w-[340px] h-[190px] rounded-2xl overflow-hidden border theme-border relative group cursor-pointer flex-shrink-0 shadow-lg" onclick="openProjectModal('proj-01')">
-              <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=600&q=80" alt="Golf Visual" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-              <div class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-emerald-600/80 backdrop-blur-md border border-white/10 text-[11px] font-bold text-white">THE GOLF CLUB</div>
-            </div>
-
-          </div>
+        <div class="overflow-hidden">
+          <div id="marqueeRowBottom" class="animate-marquee-right flex items-center gap-4 sm:gap-6"></div>
         </div>
-
       </div>
     </section>
 
@@ -688,83 +651,72 @@
     </section>
 
     <!-- ================= CONTACT SECTION ================= -->
-    <section id="contact" class="py-24 border-t theme-border">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          
-          <div class="lg:col-span-5 space-y-6">
-            <span class="pill-button-badge mb-1">DIRECT CONTACT</span>
-            <h2 class="font-heading text-3xl sm:text-4xl">Let's Discuss Your Project.</h2>
-            <p class="text-sm theme-text-muted">Chat with me directly on WhatsApp or drop a project brief below.</p>
-            
-            <div class="space-y-4 pt-4">
-              
-              <!-- Card 1: WhatsApp / Phone -->
-              <a href="https://wa.me/8801757205162" target="_blank" rel="noopener noreferrer" class="p-4 rounded-2xl theme-card border theme-border flex items-center gap-4 interactive-glow-card block cursor-pointer group">
-                <div class="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(16,185,129,0.15)]">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-10.416c-4.418 0-8 3.582-8 8 0 1.411.366 2.739 1.004 3.896l-1.043 3.812 3.902-1.024c1.121.614 2.404.962 3.769.962 4.418 0 8-3.582 8-8s-3.582-8.846-8-8.846zm0 14.4c-1.184 0-2.324-.316-3.317-.899l-.238-.141-2.47.648.66-2.406-.155-.246c-.64-1.018-.98-2.197-.98-3.406 0-3.529 2.871-6.4 6.4-6.4 3.528 0 6.4 2.871 6.4 6.4 0 3.529-2.872 6.4-6.4 6.4z"/>
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-xs theme-text-muted font-medium">WhatsApp & Direct Phone</p>
-                  <p class="text-sm font-heading theme-accent mt-0.5">+880 1757-205162</p>
-                </div>
-              </a>
+    <section id="contact" class="py-24 border-t theme-border relative overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] rounded-full bg-sky-500/5 blur-3xl"></div>
+      </div>
 
-              <!-- Card 2: Email -->
-              <a href="mailto:misbahhadi.me@gmail.com" class="p-4 rounded-2xl theme-card border theme-border flex items-center gap-4 interactive-glow-card block cursor-pointer group">
-                <div class="w-11 h-11 rounded-xl bg-sky-500/10 border border-sky-400/30 text-sky-400 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(56,189,248,0.15)]">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-xs theme-text-muted font-medium">Official Inquiries & Email</p>
-                  <p class="text-sm font-heading theme-accent mt-0.5">misbahhadi.me@gmail.com</p>
-                </div>
-              </a>
+      <div class="max-w-6xl mx-auto px-6 relative">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="pill-button-badge mb-4">DIRECT CONTACT</span>
+          <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl mt-3">Let's Discuss Your Project.</h2>
+          <p class="text-sm sm:text-base theme-text-muted mt-4 leading-relaxed">
+            Chat with me directly on WhatsApp or drop a project brief below.
+          </p>
+        </div>
 
-            </div>
+        <div class="glass-effect-card rounded-3xl border theme-border p-6 sm:p-8 lg:p-10 shadow-2xl">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+            <a href="https://wa.me/8801757205162?text=Hello%20Misbah,%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="group p-6 sm:p-7 rounded-2xl theme-card border theme-border interactive-glow-card flex flex-col gap-5">
+              <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center group-hover:scale-105 transition-transform shadow-[0_0_20px_rgba(16,185,129,0.15)]">
+                <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
+                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-10.416c-4.418 0-8 3.582-8 8 0 1.411.366 2.739 1.004 3.896l-1.043 3.812 3.902-1.024c1.121.614 2.404.962 3.769.962 4.418 0 8-3.582 8-8s-3.582-8.846-8-8.846zm0 14.4c-1.184 0-2.324-.316-3.317-.899l-.238-.141-2.47.648.66-2.406-.155-.246c-.64-1.018-.98-2.197-.98-3.406 0-3.529 2.871-6.4 6.4-6.4 3.528 0 6.4 2.871 6.4 6.4 0 3.529-2.872 6.4-6.4 6.4z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs theme-text-muted font-semibold uppercase tracking-wider">WhatsApp & Direct Phone</p>
+                <p class="text-xl sm:text-2xl font-heading theme-accent mt-2">+880 1757-205162</p>
+              </div>
+              <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mt-auto">
+                Message on WhatsApp
+                <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </span>
+            </a>
+
+            <a href="mailto:misbahhadi.me@gmail.com" class="group p-6 sm:p-7 rounded-2xl theme-card border theme-border interactive-glow-card flex flex-col gap-5">
+              <div class="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-400/30 text-sky-400 flex items-center justify-center group-hover:scale-105 transition-transform shadow-[0_0_20px_rgba(56,189,248,0.15)]">
+                <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs theme-text-muted font-semibold uppercase tracking-wider">Official Inquiries & Email</p>
+                <p class="text-lg sm:text-xl font-heading theme-accent mt-2 break-all">misbahhadi.me@gmail.com</p>
+              </div>
+              <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-400 mt-auto">
+                Send an Email
+                <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </span>
+            </a>
+
+            <a href="https://www.instagram.com/themizfx/" target="_blank" rel="noopener noreferrer" class="group p-6 sm:p-7 rounded-2xl theme-card border theme-border interactive-glow-card flex flex-col gap-5">
+              <div class="w-14 h-14 rounded-2xl bg-pink-500/10 border border-pink-500/30 text-pink-400 flex items-center justify-center group-hover:scale-105 transition-transform shadow-[0_0_20px_rgba(236,72,153,0.15)]">
+                <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs theme-text-muted font-semibold uppercase tracking-wider">Instagram Direct</p>
+                <p class="text-lg sm:text-xl font-heading theme-accent mt-2">@themizfx</p>
+              </div>
+              <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-pink-400 mt-auto">
+                Message on Instagram
+                <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </span>
+            </a>
+
           </div>
-
-          <div class="lg:col-span-7">
-            <div class="p-8 rounded-2xl theme-card border theme-border shadow-xl">
-              <form id="contactForm" class="space-y-6">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label class="block text-xs font-semibold theme-text-muted uppercase mb-2">Name *</label>
-                    <input type="text" id="formName" required placeholder="Alex Morgan" class="w-full px-4 py-3 rounded-xl theme-card border theme-border text-sm focus:border-sky-500 outline-none">
-                  </div>
-                  <div>
-                    <label class="block text-xs font-semibold theme-text-muted uppercase mb-2">Email *</label>
-                    <input type="email" id="formEmail" required placeholder="alex@creator.com" class="w-full px-4 py-3 rounded-xl theme-card border theme-border text-sm focus:border-sky-500 outline-none">
-                  </div>
-                </div>
-                <div>
-                  <label class="block text-xs font-semibold theme-text-muted uppercase mb-2">Project Type</label>
-                  <select id="formProjectType" class="w-full px-4 py-3 rounded-xl theme-card border theme-border text-sm focus:border-sky-500 outline-none">
-                    <option>YouTube Video Editing</option>
-                    <option>Short-form Viral Reels/TikTok</option>
-                    <option>Commercial / Ad Edit</option>
-                    <option>Cinematic Color Grading</option>
-                    <option>Graphic Design & Manipulation</option>
-                  </select>
-                </div>
-                <div>
-                  <label class="block text-xs font-semibold theme-text-muted uppercase mb-2">Brief *</label>
-                  <textarea id="formMessage" required rows="4" placeholder="Tell me about your goals, footage, and timeline..." class="w-full px-4 py-3 rounded-xl theme-card border theme-border text-sm focus:border-sky-500 outline-none resize-none"></textarea>
-                </div>
-                <button type="submit" id="submitBtn" class="w-full py-4 rounded-xl bg-sky-500 text-white font-bold text-sm uppercase tracking-wider hover:bg-sky-400 hover:text-black transition-all cursor-pointer">
-                  Send Message
-                </button>
-                <div id="formSuccessNotice" class="p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/40 text-emerald-400 text-xs hidden">
-                  ✓ Message dispatched! Misbah will respond within 24 hours.
-                </div>
-              </form>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
@@ -773,18 +725,18 @@
 
   <!-- ================= FOOTER ================= -->
   <footer class="relative z-10 border-t theme-border py-12 text-xs theme-text-muted text-center">
-    <p>© 2026 Misbah Hadi. All rights reserved.</p>
+    <p>© 2026 Misbah Hadi. All Rights Reserved.</p>
   </footer>
 
   <!-- ================= PROJECT MODAL ================= -->
   <div id="projectModal" class="fixed inset-0 z-[100] hidden bg-black/85 backdrop-blur-xl overflow-y-auto p-4 sm:p-8" role="dialog" aria-modal="true" onclick="closeModalOnBackdrop(event)">
-      <div class="w-full max-w-3xl theme-card border theme-border rounded-2xl overflow-hidden relative text-left shadow-2xl mx-auto" onclick="event.stopPropagation()">
+      <div id="modalCard" class="w-full max-w-3xl theme-card border theme-border rounded-2xl overflow-hidden relative text-left shadow-2xl mx-auto" onclick="event.stopPropagation()">
         <div class="p-4 border-b theme-border flex items-center justify-between">
           <span id="modalCategoryBadge" class="text-xs font-bold theme-accent">Category</span>
           <button onclick="closeModal()" class="p-2 theme-text-muted hover:text-sky-500 font-bold text-base cursor-pointer">✕</button>
         </div>
         <div id="modalMediaContainer" class="bg-black aspect-video-custom"></div>
-        <div class="p-6 space-y-4">
+        <div id="modalTextContent" class="p-6 space-y-4">
           <h3 id="modalTitle" class="font-heading text-2xl">Title</h3>
           <p id="modalDescription" class="text-xs theme-text-muted leading-relaxed">Description</p>
         </div>
@@ -793,8 +745,50 @@
 
   <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
+    function scrollToTopOnLoad() {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+
+      const navEntry = performance.getEntriesByType("navigation")[0];
+      if (navEntry?.type === "reload" && window.location.hash) {
+        history.replaceState(null, "", window.location.pathname + window.location.search);
+      }
+    }
+
+    scrollToTopOnLoad();
+    window.addEventListener("load", scrollToTopOnLoad);
+    window.addEventListener("pageshow", (event) => {
+      if (event.persisted) scrollToTopOnLoad();
+    });
+
     function youtubeThumbnail(id) {
       return `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+    }
+
+    const visualGalleryImages = Array.from({ length: 24 }, (_, i) =>
+      `gallery/visual-${String(i + 1).padStart(2, "0")}.jpeg`
+    );
+
+    function renderShowcaseItem(src, index) {
+      return `
+        <div class="showcase-item rounded-2xl overflow-hidden border theme-border shadow-lg cursor-pointer group flex items-center justify-center p-2" onclick="openGalleryModal('${src}', 'Artwork ${index + 1}')">
+          <img src="${src}" alt="Artwork ${index + 1}" loading="lazy" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+        </div>
+      `;
+    }
+
+    function renderShowcaseMarquee() {
+      const rowTop = visualGalleryImages.slice(0, 12);
+      const rowBottom = visualGalleryImages.slice(12, 24);
+
+      const buildRow = (images) => {
+        const looped = images.concat(images);
+        return looped.map((src, i) => renderShowcaseItem(src, i % images.length)).join("");
+      };
+
+      document.getElementById("marqueeRowTop").innerHTML = buildRow(rowTop);
+      document.getElementById("marqueeRowBottom").innerHTML = buildRow(rowBottom);
     }
 
     function buildYoutubeEmbedUrl(videoId, extraParams = {}) {
@@ -957,18 +951,21 @@
     ];
 
     const servicesData = [
-      { num: "01", title: "YouTube Video Editing", desc: "Full retention-focused editing for long-form channels." },
-      { num: "02", title: "UGC Video", desc: "Authentic Stories. Real Connections." },
-      { num: "03", title: "VSL Video", desc: "Turn Attention Into Action." },
-      { num: "04", title: "Short-form Content", desc: "Dynamic Reels/TikTok edits with kinetic captions." },
-      { num: "05", title: "Cinematic Editing", desc: "Commercial spots and cinematic storytelling." },
-      { num: "06", title: "Color Grading", desc: "Professional color science and filmic looks." }
+      { num: "01", title: "YouTube Video Editing", desc: "Full retention-focused editing for long-form channels.", tag: "Keep Viewers Watching" },
+      { num: "02", title: "UGC Video", desc: "Authentic Stories. Real Connections.", tag: "Real Stories. Real Impact" },
+      { num: "03", title: "VSL Video", desc: "High-converting video sales letters built for clarity, pace, and persuasion.", tag: "Turn Attention Into Action" },
+      { num: "04", title: "Short-form Content", desc: "Dynamic Reels/TikTok edits with kinetic captions.", tag: "Fast Edits. Stronger Hooks" },
+      { num: "05", title: "Long Form Video", desc: "Business, Motivational, Educational, Personal Development Videos.", tag: "Stories That Keep Them Watching." },
+      { num: "06", title: "Cinematic Editing", desc: "Commercial spots and cinematic storytelling.", tag: "Stories With Cinematic Impact" },
+      { num: "07", title: "Color Grading", desc: "Professional color science and filmic looks.", tag: "Rich Tones. Refined Visuals" },
+      { num: "08", title: "Social Media Ads", desc: "Social media post, facebook ad creative, ad image, instagram post, ads design.", tag: "Social media campaign designed to build trust." }
     ];
 
     document.addEventListener("DOMContentLoaded", () => {
       
       initTheme();
       initBubbleCursor();
+      renderShowcaseMarquee();
 
       // Render Skills
       document.getElementById("skillsGrid").innerHTML = skillsData.map(s => `
@@ -989,16 +986,16 @@
       renderPortfolio("All");
 
       // Render Services
-      document.getElementById("servicesGrid").innerHTML = servicesData.map((s, index) => `
-        <div class="p-6 rounded-2xl theme-card border theme-border interactive-glow-card cursor-default flex flex-col justify-between group${index === 4 ? ' lg:col-start-2' : ''}">
+      document.getElementById("servicesGrid").innerHTML = servicesData.map((s) => `
+        <div class="p-6 rounded-2xl theme-card border theme-border interactive-glow-card cursor-default flex flex-col justify-between group">
           <div>
             <span class="font-heading text-sm theme-accent font-bold">${s.num}</span>
             <h3 class="text-base font-heading mt-2 group-hover:text-sky-400 transition-colors">${s.title}</h3>
             <p class="text-xs theme-text-muted mt-2 leading-relaxed">${s.desc}</p>
           </div>
-          <div class="mt-6 pt-4 border-t theme-border flex items-center justify-between text-xs theme-text-muted">
-            <span>High Retention</span>
-            <span class="text-sky-400">↗</span>
+          <div class="mt-6 pt-4 border-t theme-border flex items-center justify-between text-xs theme-text-muted gap-3">
+            <span class="leading-relaxed">${s.tag || "High Retention"}</span>
+            <span class="text-sky-400 flex-shrink-0">↗</span>
           </div>
         </div>
       `).join('');
@@ -1012,17 +1009,73 @@
         document.getElementById("closeIcon").classList.toggle("hidden");
       });
 
-      // Contact Form Submission
-      document.getElementById("contactForm").addEventListener("submit", (e) => {
-        e.preventDefault();
-        document.getElementById("submitBtn").innerText = "Sending...";
-        setTimeout(() => {
-          document.getElementById("contactForm").reset();
-          document.getElementById("submitBtn").innerText = "Send Message";
-          document.getElementById("formSuccessNotice").classList.remove("hidden");
-        }, 1000);
-      });
+      initScrollReveal();
     });
+
+    function initScrollReveal() {
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
+
+      function register(el, variant = "scroll-reveal-up", delay = 0) {
+        if (!el) return;
+        el.classList.add("scroll-reveal", variant);
+        if (delay) el.style.transitionDelay = `${delay}s`;
+        if (prefersReduced) {
+          el.classList.add("is-visible");
+        } else {
+          observer.observe(el);
+        }
+      }
+
+      function staggerChildren(container, variant = "scroll-reveal-up", step = 0.07, max = 0.49) {
+        if (!container) return;
+        Array.from(container.children).forEach((child, i) => {
+          register(child, variant, Math.min(i * step, max));
+        });
+      }
+
+      const heroLeft = document.querySelector("#hero .lg\\:col-span-7");
+      const heroRight = document.querySelector("#hero .lg\\:col-span-5");
+      register(heroLeft, "scroll-reveal-left");
+      register(heroRight, "scroll-reveal-right", 0.15);
+      if (!prefersReduced) {
+        setTimeout(() => heroLeft?.classList.add("is-visible"), 120);
+        setTimeout(() => heroRight?.classList.add("is-visible"), 280);
+      }
+
+      register(document.querySelector("#showcase .max-w-7xl"), "scroll-reveal-up");
+      register(document.querySelector("#showcase .marquee-wrapper"), "scroll-reveal-up", 0.18);
+
+      register(document.querySelector("#about .lg\\:col-span-5"), "scroll-reveal-left");
+      register(document.querySelector("#about .lg\\:col-span-7"), "scroll-reveal-right", 0.12);
+
+      register(document.querySelector("#featured .flex.flex-col"), "scroll-reveal-up");
+      staggerChildren(document.getElementById("featuredContainer"));
+
+      register(document.querySelector("#skills .text-center"), "scroll-reveal-up");
+      staggerChildren(document.getElementById("skillsGrid"));
+
+      register(document.querySelector("#portfolio .text-center"), "scroll-reveal-up");
+      register(document.getElementById("portfolioFilterContainer"), "scroll-reveal-up", 0.1);
+      staggerChildren(document.getElementById("portfolioGrid"));
+
+      register(document.querySelector("#services .text-center"), "scroll-reveal-up");
+      staggerChildren(document.getElementById("servicesGrid"));
+
+      register(document.querySelector("#process .text-center"), "scroll-reveal-up");
+      staggerChildren(document.querySelector("#process .grid"));
+
+      register(document.querySelector("#contact .text-center"), "scroll-reveal-up");
+      register(document.querySelector("#contact .glass-effect-card"), "scroll-reveal-scale", 0.15);
+    }
 
     /**
      * RENDER 100% UNIFORM STACKED FEATURED PROJECTS
@@ -1155,6 +1208,7 @@
         }
       });
       renderPortfolio(cat);
+      animatePortfolioGrid();
     };
 
     function renderPortfolio(cat) {
@@ -1174,10 +1228,54 @@
       `).join('');
     }
 
+    function animatePortfolioGrid() {
+      const grid = document.getElementById("portfolioGrid");
+      if (!grid) return;
+      Array.from(grid.children).forEach((child, i) => {
+        child.classList.remove("is-visible");
+        child.classList.add("scroll-reveal", "scroll-reveal-up");
+        child.style.transitionDelay = `${Math.min(i * 0.06, 0.36)}s`;
+        requestAnimationFrame(() => child.classList.add("is-visible"));
+      });
+    }
+
+    window.openGalleryModal = function(src, alt) {
+      const modal = document.getElementById("projectModal");
+      const modalCard = document.getElementById("modalCard");
+      const container = document.getElementById("modalMediaContainer");
+      const textContent = document.getElementById("modalTextContent");
+
+      modalCard.classList.remove("max-w-3xl");
+      modalCard.classList.add("max-w-6xl");
+      container.classList.remove("aspect-video-custom");
+      container.classList.add("modal-image-view");
+      textContent.classList.add("hidden");
+
+      document.getElementById("modalCategoryBadge").innerText = "Visual Index";
+      document.getElementById("modalTitle").innerText = alt;
+
+      container.innerHTML = "";
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = alt;
+      container.appendChild(img);
+
+      modal.classList.remove("hidden");
+      document.body.classList.add("overflow-hidden");
+    };
+
     window.openProjectModal = function(id) {
       const p = portfolioProjects.find(item => item.id === id) || portfolioProjects[0];
       const modal = document.getElementById("projectModal");
+      const modalCard = document.getElementById("modalCard");
       const container = document.getElementById("modalMediaContainer");
+      const textContent = document.getElementById("modalTextContent");
+
+      modalCard.classList.add("max-w-3xl");
+      modalCard.classList.remove("max-w-6xl");
+      container.classList.add("aspect-video-custom");
+      container.classList.remove("modal-image-view");
+      textContent.classList.remove("hidden");
 
       document.getElementById("modalTitle").innerText = p.title;
       document.getElementById("modalCategoryBadge").innerText = p.category;
