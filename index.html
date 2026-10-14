@@ -305,6 +305,98 @@
       }
     }
 
+    .pricing-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .pricing-list li {
+      position: relative;
+      padding-left: 1.15rem;
+      font-size: 0.875rem;
+      line-height: 1.45;
+    }
+
+    .pricing-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .pricing-plan-featured {
+      border-color: var(--accent) !important;
+      box-shadow: 0 0 35px var(--card-glow), 0 12px 40px -12px rgba(0, 0, 0, 0.35);
+    }
+
+    .pricing-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 9999px;
+      border: 1px solid var(--border-color);
+      background: transparent;
+      transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .pricing-dot.is-active {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: scale(1.15);
+    }
+
+    @media (max-width: 1023px) {
+      .pricing-slider-outer {
+        margin-left: -1.5rem;
+        margin-right: -1.5rem;
+      }
+
+      .pricing-grid {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        gap: 1rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scroll-padding-inline: 1.5rem;
+        padding: 0.25rem 1.5rem 0.5rem;
+        scrollbar-width: none;
+      }
+
+      .pricing-grid::-webkit-scrollbar {
+        display: none;
+      }
+
+      .pricing-slide {
+        flex: 0 0 calc(100% - 2rem);
+        max-width: 22rem;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+        align-items: stretch;
+      }
+
+      .pricing-slide {
+        max-width: none;
+      }
+    }
+
   </style>
   <script>
     if ("scrollRestoration" in history) {
@@ -340,6 +432,7 @@
         <a href="#skills" class="theme-text-muted hover:text-sky-400 transition-colors">Skills</a>
         <a href="#portfolio" class="theme-text-muted hover:text-sky-400 transition-colors">Portfolio</a>
         <a href="#services" class="theme-text-muted hover:text-sky-400 transition-colors">Services</a>
+        <a href="#pricing" class="theme-text-muted hover:text-sky-400 transition-colors">Pricing</a>
         <a href="#process" class="theme-text-muted hover:text-sky-400 transition-colors">Process</a>
         <a href="#contact" class="theme-text-muted hover:text-sky-400 transition-colors">Contact</a>
       </nav>
@@ -375,6 +468,7 @@
         <a href="#skills" class="mobile-nav-link theme-text-muted py-2 border-b theme-border">Skills</a>
         <a href="#portfolio" class="mobile-nav-link theme-text-muted py-2 border-b theme-border">Portfolio Gallery</a>
         <a href="#services" class="mobile-nav-link theme-text-muted py-2 border-b theme-border">Services</a>
+        <a href="#pricing" class="mobile-nav-link theme-text-muted py-2 border-b theme-border">Pricing</a>
         <a href="#process" class="mobile-nav-link theme-text-muted py-2 border-b theme-border">Work Process</a>
         <a href="#contact" class="mobile-nav-link theme-text-muted py-2">Contact</a>
       </nav>
@@ -412,24 +506,21 @@
               </a>
             </div>
 
-            <!-- FROSTED GLASS EFFECT STATS CARD (Years Exp, Projects, 25+ Countries) -->
+            <!-- FROSTED GLASS EFFECT STATS CARD -->
             <div class="pt-4 w-full max-w-xl">
-              <div class="glass-effect-card p-5 rounded-2xl grid grid-cols-3 gap-2 divide-x divide-white/15 dark:divide-white/15">
+              <div class="glass-effect-card p-4 sm:p-5 rounded-2xl grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-0 sm:divide-x divide-white/15 dark:divide-white/15">
                 
-                <div class="px-3 text-center">
-                  <span class="text-2xl sm:text-3xl font-heading tracking-tight block text-white dark:text-white">4.5+</span>
-                  <span class="text-[11px] theme-text-muted uppercase font-semibold tracking-wider block mt-0.5">Years Exp</span>
+                <div class="hero-stat-cell flex flex-col items-center justify-center text-center px-4 py-2 min-h-[5.5rem] sm:min-h-[6rem]">
+                  <span class="text-2xl sm:text-3xl font-heading tracking-tight text-white dark:text-white">4+</span>
+                  <span class="text-[11px] theme-text-muted uppercase font-semibold tracking-wider mt-1.5 leading-snug">Years Experience</span>
                 </div>
 
-                <div class="px-3 text-center">
-                  <span class="text-2xl sm:text-3xl font-heading tracking-tight block text-white dark:text-white">50+</span>
-                  <span class="text-[11px] theme-text-muted uppercase font-semibold tracking-wider block mt-0.5">Projects</span>
-                </div>
-
-                <div class="px-3 text-center">
-                  <span class="text-2xl sm:text-3xl font-heading theme-accent tracking-tight block">25+</span>
-                  <span class="text-[11px] theme-text-muted uppercase font-semibold tracking-wider block mt-0.5">Countries</span>
-                </div>
+                <a href="https://wa.me/8801757205162?text=Hello%20Misbah,%20I%20would%20like%20to%20book%20a%20free%20consultation%20and%20plan%20my%20edit." target="_blank" rel="noopener noreferrer" class="hero-stat-cell flex flex-col items-center justify-center text-center px-4 py-2 min-h-[5.5rem] sm:min-h-[6rem] group transition-colors hover:opacity-95">
+                  <span class="text-2xl font-heading leading-tight tracking-tight text-white dark:text-white px-1 max-w-[14rem] sm:max-w-none">
+                    Book a <span class="theme-accent font-bold">Free</span> Consultation
+                  </span>
+                  <span class="text-[11px] theme-text-muted uppercase font-semibold tracking-wider mt-1.5 leading-snug">Plan your edit</span>
+                </a>
 
               </div>
             </div>
@@ -597,6 +688,97 @@
         </div>
 
         <div id="servicesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+
+      </div>
+    </section>
+
+    <!-- ================= PRICING SECTION ================= -->
+    <section id="pricing" class="py-24 border-b theme-border">
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="text-center max-w-4xl mx-auto mb-16">
+          <span class="pill-button-badge mb-3">PRICING</span>
+          <h2 class="font-heading text-3xl sm:text-4xl tracking-tight">Affordable pricing plans</h2>
+          <p class="text-xs sm:text-sm theme-text-muted mt-3 max-w-2xl mx-auto leading-relaxed">
+            Flexible, transparent pricing to support your team’s productivity and growth at every stage.
+          </p>
+        </div>
+
+        <div class="pricing-slider-outer">
+          <div id="pricingSlider" class="pricing-grid relative mb-4 lg:mb-10" role="region" aria-roledescription="carousel" aria-label="Pricing plans">
+
+          <article class="pricing-slide p-6 sm:p-8 rounded-2xl theme-card border theme-border interactive-glow-card flex flex-col">
+            <h3 class="font-heading text-lg">Single Video</h3>
+            <p class="text-xs theme-text-muted mt-2 mb-6 min-h-[2.75rem] leading-relaxed">Try my editing on one video before committing to a monthly plan.</p>
+            <div class="font-heading text-4xl sm:text-5xl tracking-tight theme-accent">$40</div>
+            <p class="text-xs theme-text-muted mt-2 mb-6">per video, up to 10 minutes</p>
+            <ul class="pricing-list theme-text-muted flex-1 mb-8">
+              <li>Cuts, pacing, and hook editing</li>
+              <li>Color correction and audio cleanup</li>
+              <li>Basic motion graphics and captions</li>
+              <li>2 revisions</li>
+              <li>Delivery in 3 to 4 days</li>
+            </ul>
+            <a href="https://wa.me/8801757205162?text=Hello%20Misbah,%20I%20want%20the%20Single%20Video%20plan%20($40)." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full py-3.5 rounded-full text-xs font-bold uppercase tracking-wider theme-card border theme-border hover:border-sky-500 hover:text-sky-400 transition-all">Order one video</a>
+          </article>
+
+          <article class="pricing-slide pricing-plan-featured relative p-6 sm:p-8 rounded-2xl theme-card border-2 interactive-glow-card flex flex-col lg:-translate-y-2 bg-sky-500/[0.04] dark:bg-sky-500/[0.08]">
+            <span class="pill-button-badge mb-4 self-start">Most popular</span>
+            <h3 class="font-heading text-lg">Creator Pack</h3>
+            <p class="text-xs theme-text-muted mt-2 mb-6 min-h-[2.75rem] leading-relaxed">For creators posting weekly who want editing and thumbnails handled.</p>
+            <div class="font-heading text-4xl sm:text-5xl tracking-tight theme-accent">$120</div>
+            <p class="text-xs theme-text-muted mt-2 mb-6">per month, 4 videos up to 15 minutes each</p>
+            <ul class="pricing-list theme-text-muted flex-1 mb-8">
+              <li>Everything in Single Video</li>
+              <li>A custom thumbnail for every video</li>
+              <li>Retention-focused pacing and sound design</li>
+              <li>2 revisions per video</li>
+              <li>Delivery in 48 to 72 hours</li>
+            </ul>
+            <a href="https://wa.me/8801757205162?text=Hello%20Misbah,%20I%20want%20the%20Creator%20Pack%20($120/month)." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full py-3.5 rounded-full text-xs font-bold uppercase tracking-wider bg-sky-500 text-white hover:bg-sky-400 hover:text-black transition-all shadow-[0_0_20px_rgba(56,189,248,0.35)]">Start Creator Pack</a>
+          </article>
+
+          <article class="pricing-slide p-6 sm:p-8 rounded-2xl theme-card border theme-border interactive-glow-card flex flex-col">
+            <h3 class="font-heading text-lg">Growth Pack</h3>
+            <p class="text-xs theme-text-muted mt-2 mb-6 min-h-[2.75rem] leading-relaxed">For channels that publish long videos and Shorts every week.</p>
+            <div class="font-heading text-4xl sm:text-5xl tracking-tight theme-accent">$320</div>
+            <p class="text-xs theme-text-muted mt-2 mb-6">per month, 4 long videos and 8 Shorts</p>
+            <ul class="pricing-list theme-text-muted flex-1 mb-8">
+              <li>Everything in Creator Pack</li>
+              <li>8 vertical Shorts cut from your long videos</li>
+              <li>Thumbnails for every long video</li>
+              <li>3 revisions per video</li>
+              <li>Priority delivery in 24 to 48 hours</li>
+            </ul>
+            <a href="https://wa.me/8801757205162?text=Hello%20Misbah,%20I%20want%20the%20Growth%20Pack%20($320/month)." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full py-3.5 rounded-full text-xs font-bold uppercase tracking-wider theme-card border theme-border hover:border-sky-500 hover:text-sky-400 transition-all">Start Growth Pack</a>
+          </article>
+
+          </div>
+
+          <div id="pricingSliderDots" class="flex justify-center items-center gap-2.5 mt-2 mb-8 lg:hidden" aria-label="Choose a pricing plan">
+            <button type="button" class="pricing-dot is-active" data-pricing-index="0" aria-label="Single Video plan"></button>
+            <button type="button" class="pricing-dot" data-pricing-index="1" aria-label="Creator Pack plan"></button>
+            <button type="button" class="pricing-dot" data-pricing-index="2" aria-label="Growth Pack plan"></button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pricing-extras">
+          <div class="p-6 sm:p-8 rounded-2xl theme-card border border-dashed theme-border">
+            <h4 class="font-heading text-base mb-4">Add-ons</h4>
+            <ul class="pricing-list theme-text-muted">
+              <li><strong class="text-[var(--text-main)] font-semibold">$8</strong> per extra Short or vertical cutdown</li>
+              <li><strong class="text-[var(--text-main)] font-semibold">$8</strong> per extra thumbnail</li>
+              <li><strong class="text-[var(--text-main)] font-semibold">+30%</strong> for delivery within 24 hours</li>
+              <li><strong class="text-[var(--text-main)] font-semibold">$10</strong> for a subtitle file or burned-in captions on long videos</li>
+            </ul>
+          </div>
+          <div class="p-6 sm:p-8 rounded-2xl theme-card border border-dashed theme-border">
+            <h4 class="font-heading text-base mb-4">How it works</h4>
+            <p class="text-xs sm:text-sm theme-text-muted leading-relaxed">
+              Send your footage and references. I confirm the scope, then deliver the first cut for your review. Monthly packs are billed 50% upfront and 50% mid-month. Longer videos or custom projects get a quote, so message me with the details.
+            </p>
+          </div>
+        </div>
 
       </div>
     </section>
@@ -1010,7 +1192,76 @@
       });
 
       initScrollReveal();
+      initPricingSlider();
     });
+
+    function initPricingSlider() {
+      const slider = document.getElementById("pricingSlider");
+      const dots = document.querySelectorAll(".pricing-dot");
+      if (!slider || !dots.length) return;
+
+      const slides = () => Array.from(slider.querySelectorAll(".pricing-slide"));
+      const mq = window.matchMedia("(max-width: 1023px)");
+
+      const setActiveDot = (index) => {
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("is-active", i === index);
+          dot.setAttribute("aria-current", i === index ? "true" : "false");
+        });
+      };
+
+      const nearestSlideIndex = () => {
+        const list = slides();
+        if (!list.length) return 0;
+        const center = slider.scrollLeft + slider.clientWidth / 2;
+        let best = 0;
+        let bestDist = Infinity;
+        list.forEach((slide, i) => {
+          const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+          const dist = Math.abs(slideCenter - center);
+          if (dist < bestDist) {
+            bestDist = dist;
+            best = i;
+          }
+        });
+        return best;
+      };
+
+      let scrollTick = false;
+      slider.addEventListener("scroll", () => {
+        if (!mq.matches) return;
+        if (scrollTick) return;
+        scrollTick = true;
+        requestAnimationFrame(() => {
+          setActiveDot(nearestSlideIndex());
+          scrollTick = false;
+        });
+      }, { passive: true });
+
+      const goToSlide = (index, smooth) => {
+        if (!mq.matches) return;
+        const target = slides()[index];
+        if (!target) return;
+        const left = target.offsetLeft - (slider.clientWidth - target.offsetWidth) / 2;
+        slider.scrollTo({ left: Math.max(0, left), behavior: smooth ? "smooth" : "auto" });
+        setActiveDot(index);
+      };
+
+      dots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          goToSlide(Number(dot.getAttribute("data-pricing-index")), true);
+        });
+      });
+
+      const alignSliderForViewport = () => {
+        if (!mq.matches) return;
+        requestAnimationFrame(() => goToSlide(nearestSlideIndex(), false));
+      };
+
+      requestAnimationFrame(() => goToSlide(1, false));
+      mq.addEventListener("change", alignSliderForViewport);
+      window.addEventListener("resize", alignSliderForViewport);
+    }
 
     function initScrollReveal() {
       const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1069,6 +1320,10 @@
 
       register(document.querySelector("#services .text-center"), "scroll-reveal-up");
       staggerChildren(document.getElementById("servicesGrid"));
+
+      register(document.querySelector("#pricing .text-center"), "scroll-reveal-up");
+      staggerChildren(document.querySelector("#pricing .pricing-grid"));
+      register(document.querySelector("#pricing .pricing-extras"), "scroll-reveal-up", 0.12);
 
       register(document.querySelector("#process .text-center"), "scroll-reveal-up");
       staggerChildren(document.querySelector("#process .grid"));

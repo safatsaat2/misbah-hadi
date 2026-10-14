@@ -1,0 +1,117 @@
+<!-- Paste this whole block where you want the pricing section (e.g. between Services and Process). -->
+<section id="pricing" class="mh-pricing">
+<style>
+.mh-pricing{
+  --bg:#f5f6fa; --ink:#12182f; --muted:#5b6280; --card:#ffffff; --line:#dfe2ee;
+  --accent:#2f5bff; --on-accent:#ffffff; --feat-bg:#12182f; --feat-ink:#f5f6fa; --feat-muted:#aab1d1;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  background:var(--bg); color:var(--ink); padding:72px 20px; box-sizing:border-box;
+}
+@media (prefers-color-scheme:dark){
+  .mh-pricing{--bg:#0d1226;--ink:#eef0fa;--muted:#9aa2c4;--card:#151b34;--line:#262e52;
+    --feat-bg:#2f5bff;--feat-ink:#ffffff;--feat-muted:#d6defe;--accent:#6f8bff;--on-accent:#0d1226}
+}
+.mh-pricing *{box-sizing:border-box}
+.mh-wrap{max-width:1080px;margin:0 auto}
+.mh-pricing h2{font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.15;margin:0 0 12px;letter-spacing:-.02em;max-width:18ch}
+.mh-lead{color:var(--muted);margin:0 0 40px;max-width:60ch;line-height:1.6}
+.mh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.mh-plan{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px 24px;display:flex;flex-direction:column}
+.mh-plan.feat{background:var(--feat-bg);color:var(--feat-ink);border-color:transparent;transform:translateY(-8px);padding-bottom:32px}
+.mh-plan h3{margin:0 0 4px;font-size:1.15rem}
+.mh-for{margin:0 0 20px;font-size:.92rem;color:var(--muted);min-height:2.6em;line-height:1.4}
+.feat .mh-for,.feat .mh-per{color:var(--feat-muted)}
+.mh-price{font-size:2.8rem;font-weight:700;letter-spacing:-.03em;line-height:1}
+.mh-per{font-size:.9rem;color:var(--muted);margin:6px 0 22px}
+.mh-plan ul{list-style:none;margin:0 0 26px;padding:0;display:grid;gap:10px;flex:1}
+.mh-plan li{padding-left:22px;position:relative;font-size:.95rem;line-height:1.4}
+.mh-plan li::before{content:"";position:absolute;left:2px;top:.45em;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.feat li::before{background:var(--feat-ink)}
+.mh-btn{display:block;text-align:center;text-decoration:none;font-weight:600;padding:13px 16px;border-radius:10px;
+  background:var(--accent);color:var(--on-accent);border:2px solid var(--accent)}
+.mh-btn:hover{filter:brightness(1.08)}
+.mh-btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.feat .mh-btn{background:var(--feat-ink);color:var(--feat-bg);border-color:var(--feat-ink)}
+.feat .mh-btn:focus-visible{outline-color:var(--feat-ink)}
+.mh-badge{display:inline-block;font-size:.78rem;font-weight:600;background:var(--feat-ink);color:var(--feat-bg);padding:3px 10px;border-radius:99px;margin-bottom:10px;align-self:flex-start}
+.mh-extras{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.mh-box{border:1px dashed var(--line);border-radius:14px;padding:22px 24px}
+.mh-box h4{margin:0 0 10px;font-size:1rem}
+.mh-box p,.mh-box li{color:var(--muted);font-size:.93rem;line-height:1.55;margin:0}
+.mh-box ul{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.mh-box b{color:var(--ink)}
+@media (max-width:860px){
+  .mh-grid,.mh-extras{grid-template-columns:1fr}
+  .mh-plan.feat{transform:none}
+}
+</style>
+
+<div class="mh-wrap">
+  <h2>Simple pricing for YouTube creators and brands</h2>
+  <p class="mh-lead">Every plan includes color grading, sound cleanup, captions on request, and a retention-first edit. Prices are in USD. Not sure which fits? Start with a single video.</p>
+
+  <div class="mh-grid">
+    <article class="mh-plan">
+      <h3>Single Video</h3>
+      <p class="mh-for">Try my editing on one video before committing to a monthly plan.</p>
+      <div class="mh-price">$40</div>
+      <div class="mh-per">per video, up to 10 minutes</div>
+      <ul>
+        <li>Cuts, pacing, and hook editing</li>
+        <li>Color correction and audio cleanup</li>
+        <li>Basic motion graphics and captions</li>
+        <li>2 revisions</li>
+        <li>Delivery in 3 to 4 days</li>
+      </ul>
+      <a class="mh-btn" href="https://wa.me/8801757205162?text=Hello%20Misbah,%20I%20want%20the%20Single%20Video%20plan%20($40).">Order one video</a>
+    </article>
+
+    <article class="mh-plan feat">
+      <span class="mh-badge">Most popular</span>
+      <h3>Creator Pack</h3>
+      <p class="mh-for">For creators posting weekly who want editing and thumbnails handled.</p>
+      <div class="mh-price">$120</div>
+      <div class="mh-per">per month, 4 videos up to 15 minutes each</div>
+      <ul>
+        <li>Everything in Single Video</li>
+        <li>A custom thumbnail for every video</li>
+        <li>Retention-focused pacing and sound design</li>
+        <li>2 revisions per video</li>
+        <li>Delivery in 48 to 72 hours</li>
+      </ul>
+      <a class="mh-btn" href="https://wa.me/8801757205162?text=Hello%20Misbah,%20I%20want%20the%20Creator%20Pack%20($160/month).">Start Creator Pack</a>
+    </article>
+
+    <article class="mh-plan">
+      <h3>Growth Pack</h3>
+      <p class="mh-for">For channels that publish long videos and Shorts every week.</p>
+      <div class="mh-price">$320</div>
+      <div class="mh-per">per month, 4 long videos and 8 Shorts</div>
+      <ul>
+        <li>Everything in Creator Pack</li>
+        <li>8 vertical Shorts cut from your long videos</li>
+        <li>Thumbnails for every long video</li>
+        <li>3 revisions per video</li>
+        <li>Priority delivery in 24 to 48 hours</li>
+      </ul>
+      <a class="mh-btn" href="https://wa.me/8801757205162?text=Hello%20Misbah,%20I%20want%20the%20Growth%20Pack%20($320/month).">Start Growth Pack</a>
+    </article>
+  </div>
+
+  <div class="mh-extras">
+    <div class="mh-box">
+      <h4>Add-ons</h4>
+      <ul>
+        <li><b>$8</b> per extra Short or vertical cutdown</li>
+        <li><b>$8</b> per extra thumbnail</li>
+        <li><b>+30%</b> for delivery within 24 hours</li>
+        <li><b>$10</b> for a subtitle file or burned-in captions on long videos</li>
+      </ul>
+    </div>
+    <div class="mh-box">
+      <h4>How it works</h4>
+      <p>Send your footage and references. I confirm the scope, then deliver the first cut for your review. Monthly packs are billed 50% upfront and 50% mid-month. Longer videos or custom projects get a quote, so message me with the details.</p>
+    </div>
+  </div>
+</div>
+</section>
